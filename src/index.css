@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background: linear-gradient(to right, #a9aadf, #b18ad4, #e0a5c3, #f8ea98); /* Gradient-Farben */
+  margin: 0; /* Setzen Sie den Seitenrand auf 0, um den Standardseitenrand zu entfernen */
+  padding: 0; /* Setzen Sie das Padding auf 0, um den Standard-Padding zu entfernen */
+  font-family: 'Poppins', sans-serif; /* Setzen Sie die Schriftart auf "Poppins" und fallbacken Sie auf generische sans-serif, falls Poppins nicht verfügbar ist */
+}

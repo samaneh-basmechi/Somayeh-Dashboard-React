@@ -1,0 +1,61 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "./assets/styles/font.css";
+
+body {
+  font-family: 'Poppins';
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+/* admin panel styles*/
+.ml-200px {
+  margin-left: 200px;
+}
+
+.ml-50px {
+  margin-left: 70px;
+}
+
+.anime {
+  transition: .3s ease-in-out all;
+}
+
+.open {
+  transition: .3s ease-in-out all;
+  position: absolute;
+  inset: 0;
+  max-width: 200px;
+  width: 100%;
+}
+
+.close {
+  transition: .3s ease-in-out all;
+  position: absolute;
+  inset: 0;
+  max-width: 70px;
+  width: 100%;
+}
+
+
+.load-animation-nav-item {
+  position: relative;
+  animation: .3s loadNavItems ease-in-out forwards;
+}
+
+@keyframes loadNavItems {
+  0% {
+    opacity: 0;
+    left: -100px
+  }
+
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
