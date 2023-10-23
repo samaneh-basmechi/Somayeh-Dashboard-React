@@ -60,7 +60,7 @@ function FileUploader () {
   };
 
   return (
-    <main className="overflow-auto h-[calc(100vh_-_80px)] p-6 sm:p-10 space-y-6 p-6 sm:p-10 space-y-6 bg-black h-full overflow-auto">
+    <main className="overflow-auto h-[calc(100vh_-_80px)] p-4 bg-black h-full overflow-auto">
       {/*  sample for uploading file*/}
       <div className="bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
 
@@ -140,20 +140,20 @@ function FileUploader () {
 
           <div className="flex gap-3 mb-6">
 
-            {/*Mandant*/}
-            <div className="w-[250px]">
-              <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Mandant
+            {/*Vicinity*/}
+            <div className="w-[125px]">
+              <label htmlFor="Vicinity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Vicinity
               </label>
               <select
-                id="Mandant"
+                id="Vicinity"
                 defaultValue="Dev"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register('Umgebung', {
-                  required: 'Please enter your Mandant.'
+                  required: 'Please enter your Vicinity.'
                 })}>
                 <option value="" disabled>
-                  Select Mandant
+                  Select Vicinity
                 </option>
                 <option value="Dev">Dev</option>
               </select>
@@ -161,6 +161,33 @@ function FileUploader () {
                 errors.Umgebung && errors.Umgebung?.type === 'required' && (
                   <p className="text-[red] text-[10px] font-bold mt-1">
                     {errors.Umgebung?.message}
+                  </p>
+                )
+              }
+            </div>
+
+            {/*Mandant*/}
+            <div className="w-[125px]">
+              <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Mandant
+              </label>
+              <select
+                id="Mandant"
+                defaultValue="DFDB"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                {...register('Mandant', {
+                  required: 'Please enter your Mandant.'
+                })}>
+                <option value="" disabled>
+                  Select Mandant
+                </option>
+                <option value="DFDB">DFDB</option>
+                <option value="DKBU">DKBU</option>
+              </select>
+              {
+                errors.Mandant && errors.Mandant?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.Mandant?.message}
                   </p>
                 )
               }
