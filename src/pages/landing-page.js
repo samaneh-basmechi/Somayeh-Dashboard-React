@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cover from '../assets/images/Cover.png';
-import FileUploader from '../shared/file-uploader';
 
 export default function LandingPge () {
   return (
