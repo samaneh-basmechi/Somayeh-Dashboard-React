@@ -1,5 +1,5 @@
 import { createBrowserRouter, BrowserRouter as Router } from 'react-router-dom';
-import Login, { loginAction } from './features/authentication/Login';
+import Login, { loginAction } from './features/authentication/login';
 import LandingPage from './pages/landing-page';
 import LandingLayout from './layouts/landing-layout';
 import Otp from './features/authentication/otp';

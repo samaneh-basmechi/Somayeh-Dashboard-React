@@ -1,6 +1,19 @@
 {
-    "login": {
-        "login": "Login",
-        "Welcome":""
-    }
+  "login": {
+    "login": "Login",
+    "submitting": "Submitting...",
+    "title": "Welcome!",
+    "subTitle": "Sign In to your account",
+    "username": "Username",
+    "password": "Password",
+    "successMessage": "Login operation is successfully completed and will be transferred to the login page.",
+    "back": "Back to Home",
+    "usernameError": "Please enter your username.",
+    "passwordError": "Please enter your password."
+  },
+  "home": {
+    "title": "Welcome to the test environment",
+    "description": "Experience the future of document processing with us. Register today and discover the countless ways to transfer your documents to the next to bring level.",
+    "button": "Let's Go"
+  }
 }

@@ -1,5 +1,19 @@
 {
     "login": {
-        "login": "Anmeldung"
+        "login": "Anmeldung",
+        "submitting": "einreichen...",
+        "title": "Willkommen!",
+        "subTitle": "Melden Sie sich bei Ihrem Konto an",
+        "username": "Nutzername",
+        "password": "Passwort",
+        "successMessage": "Der Anmeldevorgang ist erfolgreich abgeschlossen und wird auf die Anmeldeseite übertragen.",
+        "back": "Zurück nach Hause",
+        "usernameError": "Bitte geben Sie Ihren Benutzernamen ein.",
+        "passwordError": "Bitte geben Sie Ihr Passwort ein."
+    },
+    "home": {
+        "title": "Willkommen bei der Testumgebung",
+        "description": "Erleben Sie die Zukunft der Dokumentenbearbeitung mit uns. Melden Sie sich noch heute an und entdecken Sie die unzähligen Möglichkeiten, Ihre Dokumente auf die nächste Stufe zu bringen.",
+        "button": "Lass uns gehen"
     }
 }
