@@ -13,6 +13,9 @@ function FileUploader () {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
+    if(!selectedFile){
+      return;
+    }
     const form = Object.assign(data, {Payload: btoa(xmlContent), XMLFilename: selectedFile.name});
     submitForm(form, {method: 'post'});
   };
@@ -60,14 +63,12 @@ function FileUploader () {
   };
 
   return (
-    <main className="overflow-auto h-[calc(100vh_-_80px)] p-4 bg-black h-full overflow-auto">
-      {/*  sample for uploading file*/}
+    <main className="overflow-auto h-[calc(100vh_-_80px)] p-4 bg-black overflow-auto">
       <div className="bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
 
         <Form onSubmit={handleSubmit(onSubmit)} className=" gap-6 mb-6">
 
           <div className="flex gap-3 mb-6">
-
             {/*Vearbeitungstype*/}
             <div className="w-[250px]">
               <label htmlFor="Vearbeitungstype"
@@ -101,7 +102,6 @@ function FileUploader () {
                 )
               }
             </div>
-
             {/*Document Type*/}
             <div className="w-[250px]">
               <label htmlFor="document-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -121,7 +121,7 @@ function FileUploader () {
                 <option value="" disabled>
                   Select Document Type
                 </option>
-                <option value="OM001">OM001</option>
+                <option value="OM0001">OM0001</option>
                 <option value="OM0002">OM0002</option>
                 <option value="OM0003">OM0003</option>
                 <option value="OM0004A">OM0004A</option>
@@ -139,9 +139,33 @@ function FileUploader () {
           </div>
 
           <div className="flex gap-3 mb-6">
-
-            {/*Vicinity*/}
-            <div className="w-[125px]">
+            {/*Dokumentenanzahl*/}
+            <div className="w-[250px]">
+              <label htmlFor="Dokumentenanzahl"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Number of documents
+              </label>
+              <input type="number" id="Dokumentenanzahl"
+                     defaultValue="1"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="Number of documents"
+                     {...register('Dokumentenanzahl', {
+                       required: 'Please enter Number of documents.'
+                     })}/>
+              {
+                errors.Dokumentenanzahl && errors.Dokumentenanzahl?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.Dokumentenanzahl?.message}
+                  </p>
+                )
+              }
+            </div>
+            {/*Umgebung*/}
+            <div className="w-[250px]">
               <label htmlFor="Vicinity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Vicinity
               </label>
@@ -165,9 +189,35 @@ function FileUploader () {
                 )
               }
             </div>
+          </div>
 
+          <div className="flex gap-3 mb-6">
+            {/*Liefersystem*/}
+            <div className="w-[250px]">
+              <label htmlFor="Liefersystem"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Delivery system
+              </label>
+              <input type="text" id="Liefersystem"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="Delivery system"
+                     {...register('Liefersystem', {
+                       required: 'Please enter Liefersystem.'
+                     })}/>
+              {
+                errors.Liefersystem && errors.Liefersystem?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.Liefersystem?.message}
+                  </p>
+                )
+              }
+            </div>
             {/*Mandant*/}
-            <div className="w-[125px]">
+            <div className="w-[250px]">
               <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Mandant
               </label>
@@ -188,32 +238,6 @@ function FileUploader () {
                 errors.Mandant && errors.Mandant?.type === 'required' && (
                   <p className="text-[red] text-[10px] font-bold mt-1">
                     {errors.Mandant?.message}
-                  </p>
-                )
-              }
-            </div>
-
-            {/* Number of documents*/}
-            <div className="w-[250px]">
-              <label htmlFor="Dokumentenanzahl"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Number of documents
-              </label>
-              <input type="number" id="Dokumentenanzahl"
-                     defaultValue="1"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
-                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                           dark:focus:border-blue-500"
-                     placeholder="Number of documents"
-                     {...register('Dokumentenanzahl', {
-                       required: 'Please enter Number of documents.'
-                     })}/>
-              {
-                errors.Dokumentenanzahl && errors.Dokumentenanzahl?.type === 'required' && (
-                  <p className="text-[red] text-[10px] font-bold mt-1">
-                    {errors.Dokumentenanzahl?.message}
                   </p>
                 )
               }
@@ -314,6 +338,108 @@ function FileUploader () {
                 errors.PayloadMIMEType && errors.PayloadMIMEType?.type === 'required' && (
                   <p className="text-[red] text-[10px] font-bold mt-1">
                     {errors.PayloadMIMEType?.message}
+                  </p>
+                )
+              }
+            </div>
+          </div>
+
+          <div className="flex gap-3 mb-6">
+            {/*Callback URL*/}
+            <div className="w-[250px]">
+              <label htmlFor="CallbackURL"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                CallbackURL
+              </label>
+              <input type="text" id="CallbackURL"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="CallbackURL"
+                     {...register('CallbackURL', {
+                       required: 'Please enter CallbackURL.'
+                     })}/>
+              {
+                errors.CallbackURL && errors.CallbackURL?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.CallbackURL?.message}
+                  </p>
+                )
+              }
+            </div>
+            {/*ErrorURL*/}
+            <div className="w-[250px]">
+              <label htmlFor="ErrorURL"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                ErrorURL
+              </label>
+              <input type="text" id="ErrorURL"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="ErrorURL"
+                     {...register('ErrorURL', {
+                       required: 'Please enter ErrorURL.'
+                     })}/>
+              {
+                errors.ErrorURL && errors.ErrorURL?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.ErrorURL?.message}
+                  </p>
+                )
+              }
+            </div>
+          </div>
+
+          <div className="flex gap-3 mb-6">
+            {/*SUID*/}
+            <div className="w-[250px]">
+              <label htmlFor="SUID"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                SUID
+              </label>
+              <input type="text" id="SUID"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="SUID"
+                     {...register('SUID', {
+                       required: 'Please enter SUID.'
+                     })}/>
+              {
+                errors.SUID && errors.SUID?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.SUID?.message}
+                  </p>
+                )
+              }
+            </div>
+            {/*Description*/}
+            <div className="w-[250px]">
+              <label htmlFor="Description"
+                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Description
+              </label>
+              <input type="text" id="Description"
+                     className="bg-gray-50 border border-gray-300 text-gray-900
+                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+                           dark:focus:border-blue-500"
+                     placeholder="Description"
+                     {...register('Description', {
+                       required: 'Please enter Description.'
+                     })}/>
+              {
+                errors.Description && errors.Description?.type === 'required' && (
+                  <p className="text-[red] text-[10px] font-bold mt-1">
+                    {errors.Description?.message}
                   </p>
                 )
               }
