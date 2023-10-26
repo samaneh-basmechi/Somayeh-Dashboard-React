@@ -1,7 +1,7 @@
 import { createBrowserRouter, BrowserRouter as Router } from 'react-router-dom';
 import Login, { loginAction } from './features/authentication/login';
-import LandingPage from './pages/landing-page';
-import LandingLayout from './layouts/landing-layout';
+import LandingPage from './pages/landing/landing-page';
+import LandingLayout from './pages/landing/landing-layout';
 import Otp from './features/authentication/otp';
 import ResetPassword from './features/authentication/reset-password';
 import Dashboard from './pages/dashboard/dashboard';

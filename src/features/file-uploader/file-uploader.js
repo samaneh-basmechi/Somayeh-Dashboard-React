@@ -6,14 +6,16 @@ import { saveAs } from 'file-saver';
 import { httpService } from '../../core/http-service';
 import { useForm } from 'react-hook-form';
 import { Form, useSubmit, useNavigation, useActionData, useNavigate, useRouteError } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function FileUploader () {
+  const {t} = useTranslation();
   const [selectedFile, setSelectedFile] = useState(null);
   const [xmlContent, setContent] = useState('');
   const {register, handleSubmit, formState: {errors}} = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
-    if(!selectedFile){
+    if (!selectedFile) {
       return;
     }
     const form = Object.assign(data, {Payload: btoa(xmlContent), XMLFilename: selectedFile.name});
@@ -73,7 +75,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="Vearbeitungstype"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Vearbeitungstype
+                {t('dashboard.fileUploader.ProcessType.label')}
               </label>
               <select
                 id="Vearbeitungstype"
@@ -85,14 +87,20 @@ function FileUploader () {
                 dark:border-gray-600 dark:placeholder-gray-400
                 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register('Verarbeitungstyp', {
-                  required: 'Please enter your Vearbeitungstype.'
+                  required: t('dashboard.fileUploader.ProcessType.error')
                 })}>
                 <option value="" disabled>
-                  Select Vearbeitungstype
+                  {t('dashboard.fileUploader.ProcessType.defaultOption')}
                 </option>
-                <option value="Online">Online</option>
-                <option value="Batch">Batch</option>
-                <option value="SerialLetter">SerialLetter</option>
+                <option value="Online">
+                  {t('dashboard.fileUploader.ProcessType.options.Online')}
+                </option>
+                <option value="Batch">
+                  {t('dashboard.fileUploader.ProcessType.options.Batch')}
+                </option>
+                <option value="SerialLetter">
+                  {t('dashboard.fileUploader.ProcessType.options.SerialLetter')}
+                </option>
               </select>
               {
                 errors.Verarbeitungstyp && errors.Verarbeitungstyp?.type === 'required' && (
@@ -102,10 +110,12 @@ function FileUploader () {
                 )
               }
             </div>
+
             {/*Document Type*/}
             <div className="w-[250px]">
-              <label htmlFor="document-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Document Type
+              <label htmlFor="document-type" className="block mb-2 text-sm
+              font-medium text-gray-900 dark:text-white">
+                {t('dashboard.fileUploader.DocumentType.label')}
               </label>
               <select
                 id="document-type"
@@ -116,17 +126,29 @@ function FileUploader () {
                   dark:placeholder-gray-400 dark:text-white
                 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register('Dokumentenart', {
-                  required: 'Please enter your Document Type.'
+                  required: t('dashboard.fileUploader.DocumentType.error')
                 })}>
                 <option value="" disabled>
-                  Select Document Type
+                  {t('dashboard.fileUploader.DocumentType.defaultOption')}
                 </option>
-                <option value="OM0001">OM0001</option>
-                <option value="OM0002">OM0002</option>
-                <option value="OM0003">OM0003</option>
-                <option value="OM0004A">OM0004A</option>
-                <option value="OM0005">OM0005</option>
-                <option value="OM0005A">OM0005A</option>
+                <option value="OM0001">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0001')}
+                </option>
+                <option value="OM0002">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0002')}
+                </option>
+                <option value="OM0003">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0003')}
+                </option>
+                <option value="OM0004A">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0004A')}
+                </option>
+                <option value="OM0005">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0005')}
+                </option>
+                <option value="OM0005A">
+                  {t('dashboard.fileUploader.DocumentType.options.OM0005A')}
+                </option>
               </select>
               {
                 errors.Dokumentenart && errors.Dokumentenart?.type === 'required' && (
@@ -143,7 +165,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="Dokumentenanzahl"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Number of documents
+                {t('dashboard.fileUploader.NumberOfDocuments.label')}
               </label>
               <input type="number" id="Dokumentenanzahl"
                      defaultValue="1"
@@ -152,10 +174,11 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="Number of documents"
+                     placeholder={t('dashboard.fileUploader.NumberOfDocuments.placeholder')}
                      {...register('Dokumentenanzahl', {
-                       required: 'Please enter Number of documents.'
-                     })}/>
+                       required: t('dashboard.fileUploader.NumberOfDocuments.error')
+                     })}
+              />
               {
                 errors.Dokumentenanzahl && errors.Dokumentenanzahl?.type === 'required' && (
                   <p className="text-[red] text-[10px] font-bold mt-1">
@@ -167,19 +190,21 @@ function FileUploader () {
             {/*Umgebung*/}
             <div className="w-[250px]">
               <label htmlFor="Vicinity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Vicinity
+                {t('dashboard.fileUploader.Vicinity.label')}
               </label>
               <select
                 id="Vicinity"
                 defaultValue="Dev"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register('Umgebung', {
-                  required: 'Please enter your Vicinity.'
+                  required: t('dashboard.fileUploader.Vicinity.error')
                 })}>
                 <option value="" disabled>
-                  Select Vicinity
+                  {t('dashboard.fileUploader.Vicinity.defaultOption')}
                 </option>
-                <option value="Dev">Dev</option>
+                <option value="Dev">
+                  {t('dashboard.fileUploader.Vicinity.options.Dev')}
+                </option>
               </select>
               {
                 errors.Umgebung && errors.Umgebung?.type === 'required' && (
@@ -196,7 +221,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="Liefersystem"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Delivery system
+                {t('dashboard.fileUploader.DeliverySystem.label')}
               </label>
               <input type="text" id="Liefersystem"
                      className="bg-gray-50 border border-gray-300 text-gray-900
@@ -204,9 +229,9 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="Delivery system"
+                     placeholder={t('dashboard.fileUploader.DeliverySystem.placeholder')}
                      {...register('Liefersystem', {
-                       required: 'Please enter Liefersystem.'
+                       required: t('dashboard.fileUploader.DeliverySystem.error')
                      })}/>
               {
                 errors.Liefersystem && errors.Liefersystem?.type === 'required' && (
@@ -219,20 +244,24 @@ function FileUploader () {
             {/*Mandant*/}
             <div className="w-[250px]">
               <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Mandant
+                {t('dashboard.fileUploader.client.label')}
               </label>
               <select
                 id="Mandant"
                 defaultValue="DFDB"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register('Mandant', {
-                  required: 'Please enter your Mandant.'
+                  required: t('dashboard.fileUploader.client.error')
                 })}>
                 <option value="" disabled>
-                  Select Mandant
+                  {t('dashboard.fileUploader.client.defaultOption')}
                 </option>
-                <option value="DFDB">DFDB</option>
-                <option value="DKBU">DKBU</option>
+                <option value="DFDB">
+                  {t('dashboard.fileUploader.client.options.DKBU')}
+                </option>
+                <option value="DKBU">
+                  {t('dashboard.fileUploader.client.options.error')}
+                </option>
               </select>
               {
                 errors.Mandant && errors.Mandant?.type === 'required' && (
@@ -246,8 +275,9 @@ function FileUploader () {
 
           {/*Payload*/}
           <div className="mb-6 mx-auto bg-gray-800 rounded-md">
-            <p className="font-normal text-md text-gray-100 mb-4">
-              Upload File
+            <p
+              className="font-normal text-md text-gray-100 mb-4">
+              {t('dashboard.fileUploader.payload.title')}
             </p>
 
             <div className="mb-5 relative">
@@ -264,15 +294,15 @@ function FileUploader () {
                      justify-center p-4 text-center">
                 <div className="flex flex-col gap-3">
                     <span className="font-normal text-gray-300 text-md">
-                          Drop files here
+                     {t('dashboard.fileUploader.payload.drop')}
                     </span>
                   <span className="font-medium text-gray-300 text-lg">Or</span>
                   <span
                     className="font-normal text-gray-300 text-md
                         inline-block py-2 px-7 border border-gray-300
                         rounded-md cursor-pointer">
-                            Browse
-                      </span>
+                       {t('dashboard.fileUploader.payload.browse')}
+                   </span>
                 </div>
               </label>
             </div>
@@ -282,7 +312,7 @@ function FileUploader () {
             {/*Payload type*/}
             <div className="w-[250px]">
               <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Payload Type
+                {t('dashboard.fileUploader.PayloadType.label')}
               </label>
               <select
                 id="payload-type"
@@ -295,13 +325,13 @@ function FileUploader () {
                  dark:text-white dark:focus:ring-blue-500
                 dark:focus:border-blue-500"
                 {...register('PayloadType', {
-                  required: 'Please enter your Payload Type.'
+                  required: t('dashboard.fileUploader.PayloadType.error')
                 })}>
                 <option value="" disabled>
-                  Select Payload type
+                  {t('dashboard.fileUploader.PayloadType.defaultOption')}
                 </option>
-                <option value="Inline">Inline</option>
-                <option value="Url">Url</option>
+                <option value="Inline">{t('dashboard.fileUploader.PayloadType.options.Inline')}</option>
+                <option value="Url">{t('dashboard.fileUploader.PayloadType.options.Url')}</option>
               </select>
               {
                 errors.PayloadType && errors.PayloadType?.type === 'required' && (
@@ -314,7 +344,7 @@ function FileUploader () {
             {/*Payload MIME Type*/}
             <div className="w-[250px]">
               <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Payload MIME Type
+                {t('dashboard.fileUploader.PayloadMIMEType.label')}
               </label>
               <select
                 id="Payload-MIME-Type"
@@ -327,12 +357,14 @@ function FileUploader () {
                dark:text-white dark:focus:ring-blue-500
                dark:focus:border-blue-500"
                 {...register('PayloadMIMEType', {
-                  required: 'Please enter your Payload MIME Type.'
+                  required: t('dashboard.fileUploader.PayloadMIMEType.error')
                 })}>
                 <option value="" disabled>
-                  Select Payload MIME Type
+                  {t('dashboard.fileUploader.PayloadMIMEType.defaultOption')}
                 </option>
-                <option value="text/xml">text/xml</option>
+                <option value="text/xml">
+                  {t('dashboard.fileUploader.PayloadMIMEType.options.text')}
+                </option>
               </select>
               {
                 errors.PayloadMIMEType && errors.PayloadMIMEType?.type === 'required' && (
@@ -349,7 +381,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="CallbackURL"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                CallbackURL
+                {t('dashboard.fileUploader.CallbackURL.label')}
               </label>
               <input type="text" id="CallbackURL"
                      className="bg-gray-50 border border-gray-300 text-gray-900
@@ -357,9 +389,9 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="CallbackURL"
+                     placeholder={t('dashboard.fileUploader.CallbackURL.placeholder')}
                      {...register('CallbackURL', {
-                       required: 'Please enter CallbackURL.'
+                       required: t('dashboard.fileUploader.CallbackURL.error')
                      })}/>
               {
                 errors.CallbackURL && errors.CallbackURL?.type === 'required' && (
@@ -373,7 +405,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="ErrorURL"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                ErrorURL
+                {t('dashboard.fileUploader.ErrorURL.label')}
               </label>
               <input type="text" id="ErrorURL"
                      className="bg-gray-50 border border-gray-300 text-gray-900
@@ -381,9 +413,9 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="ErrorURL"
+                     placeholder={t('dashboard.fileUploader.ErrorURL.placeholder')}
                      {...register('ErrorURL', {
-                       required: 'Please enter ErrorURL.'
+                       required: t('dashboard.fileUploader.ErrorURL.error')
                      })}/>
               {
                 errors.ErrorURL && errors.ErrorURL?.type === 'required' && (
@@ -400,7 +432,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="SUID"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                SUID
+                {t('dashboard.fileUploader.SUID.label')}
               </label>
               <input type="text" id="SUID"
                      className="bg-gray-50 border border-gray-300 text-gray-900
@@ -408,9 +440,9 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="SUID"
+                     placeholder={t('dashboard.fileUploader.SUID.placeholder')}
                      {...register('SUID', {
-                       required: 'Please enter SUID.'
+                       required: t('dashboard.fileUploader.SUID.error')
                      })}/>
               {
                 errors.SUID && errors.SUID?.type === 'required' && (
@@ -424,7 +456,7 @@ function FileUploader () {
             <div className="w-[250px]">
               <label htmlFor="Description"
                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Description
+                {t('dashboard.fileUploader.Description.label')}
               </label>
               <input type="text" id="Description"
                      className="bg-gray-50 border border-gray-300 text-gray-900
@@ -432,9 +464,9 @@ function FileUploader () {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder="Description"
+                     placeholder={t('dashboard.fileUploader.Description.placeholder')}
                      {...register('Description', {
-                       required: 'Please enter Description.'
+                       required: t('dashboard.fileUploader.Description.error')
                      })}/>
               {
                 errors.Description && errors.Description?.type === 'required' && (

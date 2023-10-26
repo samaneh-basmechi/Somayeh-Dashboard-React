@@ -1,4 +1,4 @@
-import LandingNavbar from '../shared/landing-navbar';
+import LandingNavbar from '../../shared/landing-navbar';
 import { Outlet } from 'react-router-dom';
 
 const LandingLayout = () => {

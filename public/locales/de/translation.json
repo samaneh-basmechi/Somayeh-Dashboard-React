@@ -1,19 +1,127 @@
 {
-    "login": {
-        "login": "Anmeldung",
-        "submitting": "einreichen...",
-        "title": "Willkommen!",
-        "subTitle": "Melden Sie sich bei Ihrem Konto an",
-        "username": "Nutzername",
-        "password": "Passwort",
-        "successMessage": "Der Anmeldevorgang ist erfolgreich abgeschlossen und wird auf die Anmeldeseite übertragen.",
-        "back": "Zurück nach Hause",
-        "usernameError": "Bitte geben Sie Ihren Benutzernamen ein.",
-        "passwordError": "Bitte geben Sie Ihr Passwort ein."
+  "login": {
+    "login": "Anmeldung",
+    "submitting": "einreichen...",
+    "title": "Willkommen!",
+    "subTitle": "Melden Sie sich bei Ihrem Konto an",
+    "username": "Nutzername",
+    "password": "Passwort",
+    "successMessage": "Der Anmeldevorgang ist erfolgreich abgeschlossen und wird auf die Anmeldeseite übertragen.",
+    "back": "Zurück nach Hause",
+    "usernameError": "Bitte geben Sie Ihren Benutzernamen ein.",
+    "passwordError": "Bitte geben Sie Ihr Passwort ein."
+  },
+  "home": {
+    "title": "Willkommen bei der Testumgebung",
+    "description": "Erleben Sie die Zukunft der Dokumentenbearbeitung mit uns. Melden Sie sich noch heute an und entdecken Sie die unzähligen Möglichkeiten, Ihre Dokumente auf die nächste Stufe zu bringen.",
+    "button": "Lass uns gehen"
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Armaturenbrett",
+      "link": {
+        "users": "Benutzer",
+        "funcOne": "Funktion-Eins",
+        "funcTwo": "Funktion-Zwei",
+        "funcThree": "Funktion-drei",
+        "funcFour": "Funktion-vier"
+      },
+      "logout": "Ausloggen"
     },
-    "home": {
-        "title": "Willkommen bei der Testumgebung",
-        "description": "Erleben Sie die Zukunft der Dokumentenbearbeitung mit uns. Melden Sie sich noch heute an und entdecken Sie die unzähligen Möglichkeiten, Ihre Dokumente auf die nächste Stufe zu bringen.",
-        "button": "Lass uns gehen"
+    "fileUploader": {
+      "ProcessType": {
+        "label": "Vearbeitungstype",
+        "error": "Bitte geben Sie Ihren Verarbeitungstyp ein.",
+        "defaultOption": "Wählen Vearbeitungstype",
+        "options": {
+          "Online": "Online",
+          "Batch": "Charge",
+          "SerialLetter": "Serienbrief"
+        }
+      },
+      "DocumentType": {
+        "label": "Dokumentenart",
+        "error": "Bitte geben Sie Ihren Dokumentenart ein.",
+        "defaultOption": "Wählen Dokumentenart",
+        "options": {
+          "OM0001": "OM0001",
+          "OM0002": "OM0002",
+          "OM0003": "OM0003",
+          "OM0004A": "OM0004A",
+          "OM0005": "OM0005",
+          "OM0005A": "OM0005A"
+        }
+      },
+      "NumberOfDocuments": {
+        "label": "Dokumentenanzahl",
+        "error": "Bitte geben Sie das Dokumentenanzahl.",
+        "defaultOption": "Select Dokumentenanzahl",
+        "placeholder": "Dokumentenanzahl"
+      },
+      "Vicinity": {
+        "label": "Umgebung",
+        "error": "Bitte wählen Sie Umgebung.",
+        "defaultOption": "Wählen Umgebung",
+        "options": {
+          "Dev": "Entwickler"
+        }
+      },
+      "DeliverySystem": {
+        "label": "Liefersystem",
+        "error": "Bitte geben Sie das Liefersystem.",
+        "placeholder": "Liefersystem"
+      },
+      "client": {
+        "label": "Mandant",
+        "error": "Bitte wählen Sie Mandant aus.",
+        "defaultOption": "Wählen Mandant",
+        "options": {
+          "DFDB": "DFDB",
+          "DKBU": "DKBU"
+        }
+      },
+      "payload": {
+        "title": "Datei hochladen",
+        "drop": "Dateien hier ablegen",
+        "browse": "Durchsuche"
+      },
+      "PayloadType": {
+        "label": "Nutzlasttyp",
+        "error": "Bitte Nutzlasttyp auswählen.",
+        "defaultOption": "Wählen Sie Nutzlasttyp",
+        "options": {
+          "Inline": "Inline",
+          "Url": "Url"
+        }
+      },
+      "PayloadMIMEType": {
+        "label": " Payload MIME Type",
+        "error": "Bitte wählen Sie den Payload MIME Type aus.",
+        "defaultOption": "Wählen Sie den MIME-Typ der Nutzlast aus",
+        "options": {
+          "text": "text/xml"
+        }
+      },
+      "CallbackURL": {
+        "label": "CallbackURL",
+        "error": "Bitte geben Sie die CallbackURL.",
+        "placeholder": "CallbackURL"
+      },
+      "SUID": {
+        "label": "SUID",
+        "error": "Bitte geben Sie die SUID.",
+        "placeholder": "SUID"
+      },
+      "ErrorURL": {
+        "label": "ErrorURL",
+        "error": "Bitte geben Sie die ErrorURL.",
+        "placeholder": "ErrorURL"
+      },
+      "Description": {
+        "label": "Description",
+        "error": "Bitte geben Sie die Description.",
+        "placeholder": "Description"
+      }
     }
+  }
 }

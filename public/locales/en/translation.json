@@ -15,5 +15,112 @@
     "title": "Welcome to the test environment",
     "description": "Experience the future of document processing with us. Register today and discover the countless ways to transfer your documents to the next to bring level.",
     "button": "Let's Go"
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "Dashboard",
+      "link": {
+        "users": "Users",
+        "funcOne": "Func-one",
+        "funcTwo": "Func-two",
+        "funcThree": "Func-three",
+        "funcFour": "Func-four"
+      },
+      "logout": "logout"
+    },
+    "fileUploader": {
+      "ProcessType": {
+        "label": "Process type",
+        "error": "Please select process type.",
+        "defaultOption": "Select Process type",
+        "options": {
+          "Online": "Online",
+          "Batch": "Batch",
+          "SerialLetter": "SerialLetter"
+        }
+      },
+      "DocumentType": {
+        "label": "Document Type",
+        "error": "Please select Document Type.",
+        "defaultOption": "Select Document Type",
+        "options": {
+          "OM0001": "OM0001",
+          "OM0002": "OM0002",
+          "OM0003": "OM0003",
+          "OM0004A": "OM0004A",
+          "OM0005": "OM0005",
+          "OM0005A": "OM0005A"
+        }
+      },
+      "NumberOfDocuments": {
+        "label": "Number of documents",
+        "error": "Please enter number of documents.",
+        "placeholder": "Number of documents"
+      },
+      "Vicinity": {
+        "label": "Vicinity",
+        "error": "Please select Vicinity.",
+        "defaultOption": " Select Vicinity",
+        "options": {
+          "Dev": "Dev"
+        }
+      },
+      "DeliverySystem": {
+        "label": "Delivery system",
+        "error": "Please enter Delivery system.",
+        "placeholder": "Delivery system"
+      },
+      "client": {
+        "label": "client",
+        "error": "Please select client.",
+        "defaultOption": "select client",
+        "options": {
+          "DFDB": "DFDB",
+          "DKBU": "DKBU"
+        }
+      },
+      "payload": {
+        "title": "Upload File",
+        "drop": "Drop files here",
+        "browse": "Browse"
+      },
+      "PayloadType": {
+        "label": "Payload Type",
+        "error": "Please select Payload Type.",
+        "defaultOption": "select Payload Type",
+        "options": {
+          "Inline": "Inline",
+          "Url": "Url"
+        }
+      },
+      "PayloadMIMEType": {
+        "label": " Payload MIME Type",
+        "error": "Please select Payload MIME Type.",
+        "defaultOption": "select Payload MIME Type",
+        "options": {
+          "text": "text/xml"
+        }
+      },
+      "CallbackURL": {
+        "label": "CallbackURL",
+        "error": "Please enter CallbackURL.",
+        "placeholder": "CallbackURL"
+      },
+      "ErrorURL": {
+        "label": "ErrorURL",
+        "error": "Please enter ErrorURL.",
+        "placeholder": "ErrorURL"
+      },
+      "SUID": {
+        "label": "SUID",
+        "error": "Please enter SUID.",
+        "placeholder": "SUID"
+      },
+      "Description": {
+        "label": "Description",
+        "error": "Please enter Description.",
+        "placeholder": "SUID"
+      }
+    }
   }
 }

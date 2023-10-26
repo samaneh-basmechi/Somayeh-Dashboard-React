@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cover from '../assets/images/Cover.png';
+import Cover from '../../assets/images/Cover.png';
 import { useTranslation } from 'react-i18next';
 
 export default function LandingPge () {
