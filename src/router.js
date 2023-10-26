@@ -1,11 +1,10 @@
 import { createBrowserRouter, BrowserRouter as Router } from 'react-router-dom';
-import Login, { loginAction } from './features/authentication/login';
+import Login, { loginAction } from './pages/authentication/login';
 import LandingPage from './pages/landing/landing-page';
 import LandingLayout from './pages/landing/landing-layout';
-import Otp from './features/authentication/otp';
-import ResetPassword from './features/authentication/reset-password';
-import Dashboard from './pages/dashboard/dashboard';
-import FileUploader, { uploadAction } from './features/file-uploader/file-uploader';
+import DashboardLayout from './pages/dashboard/dashboard-layout';
+import FileUploader, { uploadAction } from './pages/dashboard/file-uploader/file-uploader';
+import User from './pages/dashboard/users/user';
 
 const router = createBrowserRouter([
   {
@@ -21,19 +20,11 @@ const router = createBrowserRouter([
         path: '',
         element: <LandingPage/>
       },
-      {
-        path: 'otp',
-        element: <Otp/>
-      },
-      {
-        path: 'reset-password',
-        element: <ResetPassword/>
-      }
     ]
   },
   {
     path: 'dashboard',
-    element: <Dashboard/>,
+    element: <DashboardLayout/>,
     children: [
       {
         element: <FileUploader/>,
@@ -46,6 +37,12 @@ const router = createBrowserRouter([
         element: <FileUploader/>,
         action: uploadAction,
         errorElement: <FileUploader/>
+      },
+      {
+        path: 'users',
+        element: <User/>,
+        action: uploadAction,
+        errorElement: <User/>
       }
     ]
   }

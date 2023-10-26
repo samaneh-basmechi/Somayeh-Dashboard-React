@@ -3,9 +3,9 @@ import vkbeautify from 'vkbeautify';
 import xmljs from 'xml-js';
 import { jsPDF } from 'jspdf';
 import { saveAs } from 'file-saver';
-import { httpService } from '../../core/http-service';
+import { httpService } from '../../../core/http-service';
 import { useForm } from 'react-hook-form';
-import { Form, useSubmit, useNavigation, useActionData, useNavigate, useRouteError } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function FileUploader () {
@@ -74,7 +74,7 @@ function FileUploader () {
             {/*Vearbeitungstype*/}
             <div className="w-[250px]">
               <label htmlFor="Vearbeitungstype"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.ProcessType.label')}
               </label>
               <select
@@ -114,7 +114,7 @@ function FileUploader () {
             {/*Document Type*/}
             <div className="w-[250px]">
               <label htmlFor="document-type" className="block mb-2 text-sm
-              font-medium text-gray-900 dark:text-white">
+              font-medium text-white">
                 {t('dashboard.fileUploader.DocumentType.label')}
               </label>
               <select
@@ -164,7 +164,7 @@ function FileUploader () {
             {/*Dokumentenanzahl*/}
             <div className="w-[250px]">
               <label htmlFor="Dokumentenanzahl"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.NumberOfDocuments.label')}
               </label>
               <input type="number" id="Dokumentenanzahl"
@@ -189,7 +189,7 @@ function FileUploader () {
             </div>
             {/*Umgebung*/}
             <div className="w-[250px]">
-              <label htmlFor="Vicinity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="Vicinity" className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.Vicinity.label')}
               </label>
               <select
@@ -220,7 +220,7 @@ function FileUploader () {
             {/*Liefersystem*/}
             <div className="w-[250px]">
               <label htmlFor="Liefersystem"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.DeliverySystem.label')}
               </label>
               <input type="text" id="Liefersystem"
@@ -243,7 +243,7 @@ function FileUploader () {
             </div>
             {/*Mandant*/}
             <div className="w-[250px]">
-              <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.client.label')}
               </label>
               <select
@@ -311,7 +311,7 @@ function FileUploader () {
           <div className="flex gap-3 mb-6">
             {/*Payload type*/}
             <div className="w-[250px]">
-              <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.PayloadType.label')}
               </label>
               <select
@@ -343,7 +343,7 @@ function FileUploader () {
             </div>
             {/*Payload MIME Type*/}
             <div className="w-[250px]">
-              <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.PayloadMIMEType.label')}
               </label>
               <select
@@ -380,7 +380,7 @@ function FileUploader () {
             {/*Callback URL*/}
             <div className="w-[250px]">
               <label htmlFor="CallbackURL"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.CallbackURL.label')}
               </label>
               <input type="text" id="CallbackURL"
@@ -404,7 +404,7 @@ function FileUploader () {
             {/*ErrorURL*/}
             <div className="w-[250px]">
               <label htmlFor="ErrorURL"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.ErrorURL.label')}
               </label>
               <input type="text" id="ErrorURL"
@@ -431,7 +431,7 @@ function FileUploader () {
             {/*SUID*/}
             <div className="w-[250px]">
               <label htmlFor="SUID"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.SUID.label')}
               </label>
               <input type="text" id="SUID"
@@ -455,7 +455,7 @@ function FileUploader () {
             {/*Description*/}
             <div className="w-[250px]">
               <label htmlFor="Description"
-                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                     className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.Description.label')}
               </label>
               <input type="text" id="Description"

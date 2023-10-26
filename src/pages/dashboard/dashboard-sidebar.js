@@ -6,7 +6,7 @@ import Logout from '../../assets/images/logout.svg';
 import User from '../../assets/images/user.svg';
 import { useTranslation } from 'react-i18next';
 
-function Sidebar ( params ) {
+function DashboardSidebar ( params ) {
   const {t} = useTranslation();
 
   return (
@@ -35,7 +35,7 @@ function Sidebar ( params ) {
           <Link
             to="func-one"
             className={` text-white inline-flex items-center 
-            py-3 hover:text-white hover:bg-gray-700 focus:ext-white
+            py-3 hover:text-white hover:bg-gray-700 focus:text-white
              rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}
             activeclassname="bg-white">
             <img className="w-4 h-4" src={Func} alt=""/>
@@ -83,4 +83,4 @@ function Sidebar ( params ) {
   );
 }
 
-export default Sidebar;
+export default DashboardSidebar;

@@ -3,7 +3,7 @@ import Backend from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(Backend).use(initReactI18next).init({
-    lng: "en"
+    lng: "de"
 });
 
 export default i18n;
