@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import AppSwitch from "./switch";
-import tranlator from '../assets/images/translator.svg';
-import ChangeLanguage from "./change-language";
+import AppSwitch from "../../shared/switch";
+import ChangeLanguage from "../../shared/change-language";
 
 export default function LandingNavbar() {
   return (

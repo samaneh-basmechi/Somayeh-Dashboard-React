@@ -5,12 +5,12 @@ import { httpService } from '../../core/http-service';
 import { Form, useSubmit, useNavigation, useActionData, useNavigate, useRouteError } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-function Login () {
-  const {t} = useTranslation();
-  const {register, handleSubmit, formState: {errors}} = useForm();
+function Login() {
+  const { t } = useTranslation();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
-    submitForm(data, {method: 'post'});
+    submitForm(data, { method: 'post' });
   };
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== 'idle';
@@ -21,7 +21,7 @@ function Login () {
   useEffect(() => {
     if (isSuccessOperation) {
       setTimeout(() => {
-        navigate('/dashboard');
+        // navigate('/dashboard');
       }, 2000);
     }
   });
@@ -49,7 +49,7 @@ function Login () {
             rounded-md border border-gray-300 
             focus:outline-none focus:border-violet-500 
             ${errors.username && 'border border-solid border-[red]'}`}
-            placeholder="Username"/>
+            placeholder="Username" />
           {
             errors.username && errors.username?.type === 'required' && (
               <p className="text-[red] text-[10px] font-bold mt-1">
@@ -64,13 +64,13 @@ function Login () {
             {t('login.password')}
           </label>
           <input
-            {...register('password', {required: t('login.passwordError')})}
+            {...register('password', { required: t('login.passwordError') })}
             className={`w-full px-3 py-2 
             rounded-md border border-gray-300 
             focus:outline-none focus:border-violet-500 
             ${errors.password && 'border border-solid border-[red]'}`}
             type="password"
-            placeholder="Password"/>
+            placeholder="Password" />
           {
             errors.password && errors.password?.type === 'required' && (
               <p className="text-[red] text-[10px] font-bold mt-1">
@@ -101,7 +101,7 @@ function Login () {
         }
         {
           routeErrors?.response?.data?.length > 0 && (
-            routeErrors.response.data.map(( error ) => {
+            routeErrors.response.data.map((error) => {
               return <p>{error.description}</p>;
             })
           )
@@ -124,9 +124,10 @@ function Login () {
 
 export default Login;
 
-export async function loginAction ( {request} ) {
+export async function loginAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const response = await httpService.post('/auth/session', data);
+  console.log(response)
   return response.status === 200;
 }

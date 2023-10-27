@@ -5,44 +5,49 @@ import LandingLayout from './pages/landing/landing-layout';
 import DashboardLayout from './pages/dashboard/dashboard-layout';
 import FileUploader, { uploadAction } from './pages/dashboard/file-uploader/file-uploader';
 import User from './pages/dashboard/users/user';
+import Profile from './pages/dashboard/profile/profile';
 
 const router = createBrowserRouter([
   {
-    element: <LandingLayout/>,
+    element: <LandingLayout />,
     children: [
       {
         path: 'login',
-        element: <Login/>,
+        element: <Login />,
         action: loginAction,
-        errorElement: <Login/>
+        errorElement: <Login />
       },
       {
         path: '',
-        element: <LandingPage/>
+        element: <LandingPage />
       },
     ]
   },
   {
     path: 'dashboard',
-    element: <DashboardLayout/>,
+    element: <DashboardLayout />,
     children: [
       {
-        element: <FileUploader/>,
+        element: <User />,
         action: uploadAction,
-        errorElement: <FileUploader/>,
+        errorElement: <User />,
         index: true
       },
       {
         path: 'func-one',
-        element: <FileUploader/>,
+        element: <FileUploader />,
         action: uploadAction,
-        errorElement: <FileUploader/>
+        errorElement: <FileUploader />
       },
       {
         path: 'users',
-        element: <User/>,
-        action: uploadAction,
-        errorElement: <User/>
+        element: <User />,
+        errorElement: <User />
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+        errorElement: <Profile />
       }
     ]
   }

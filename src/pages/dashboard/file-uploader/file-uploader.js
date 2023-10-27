@@ -65,7 +65,7 @@ function FileUploader () {
   };
 
   return (
-    <main className="overflow-auto h-[calc(100vh_-_80px)] p-4 bg-black overflow-auto">
+    <main className="overflow-auto h-[calc(100vh_-_80px)] p-6 bg-black overflow-auto">
       <div className="bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
 
         <Form onSubmit={handleSubmit(onSubmit)} className=" gap-6 mb-6">

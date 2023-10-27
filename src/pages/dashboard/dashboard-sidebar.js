@@ -21,7 +21,7 @@ function DashboardSidebar ( params ) {
       <div className="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
         <nav className="flex flex-col mx-4 my-6 space-y-4">
           <Link
-            to="/"
+            to="users"
             className={` text-white inline-flex items-center 
             py-3 hover:text-white hover:bg-gray-700 focus:text-white
              rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}
