@@ -2,6 +2,7 @@ import React from 'react';
 import Menu from '../../assets/images/menu.svg';
 import Profile from '../../assets/images/profile.png';
 import ChangeLanguage from '../../shared/change-language';
+import ThemeSwitch from '../../shared/theme-switch';
 import { Link } from 'react-router-dom';
 
 function DashboardHeader(params) {
@@ -36,7 +37,8 @@ function DashboardHeader(params) {
         </Link>
 
         <div className="border-l-gray-600 border-l
-        border-solid pl-2 space-x-1">
+        border-solid pl-4 space-x-1 flex gap-4 ">
+          <ThemeSwitch />
           <ChangeLanguage />
         </div>
       </div>

@@ -21,14 +21,14 @@ function Login() {
   useEffect(() => {
     if (isSuccessOperation) {
       setTimeout(() => {
-        // navigate('/dashboard');
+        navigate('/dashboard');
       }, 2000);
     }
   });
 
   return (
 
-    <div className="max-w-md w-full bg-black p-8 rounded-lg shadow-lg">
+    <div className="max-w-md w-full bg-black p-8 rounded-lg shadow-lg dark:bg-gray-900">
 
       <div className="text-center text-white mb-10">
         <p className="text-2xl font-bold">{t('login.title')}</p>
@@ -37,7 +37,7 @@ function Login() {
 
       <Form onSubmit={handleSubmit(onSubmit)}>
 
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="block text-white text-sm font-normal mb-2">
             {t('login.username')}
           </label>
@@ -50,13 +50,9 @@ function Login() {
             focus:outline-none focus:border-violet-500 
             ${errors.username && 'border border-solid border-[red]'}`}
             placeholder="Username" />
-          {
-            errors.username && errors.username?.type === 'required' && (
-              <p className="text-[red] text-[10px] font-bold mt-1">
-                {errors.username?.message}
-              </p>
-            )
-          }
+          <div className="text-[red] text-[10px] font-bold mt-1 h-[8px]">
+            {errors.username?.message}
+          </div>
         </div>
 
         <div className="mb-4">
@@ -71,25 +67,21 @@ function Login() {
             ${errors.password && 'border border-solid border-[red]'}`}
             type="password"
             placeholder="Password" />
-          {
-            errors.password && errors.password?.type === 'required' && (
-              <p className="text-[red] text-[10px] font-bold mt-1">
-                {errors.password?.message}
-              </p>
-            )
-          }
+          <div className="text-[red] text-[10px] font-bold mt-1 h-[8px]">
+            {errors.password?.message}
+          </div>
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
           className="block
-            w-full bg-black
+            w-full bg-black mt-10
             text-white py-4 px-4
             rounded-md hover:bg-gradient-to-r
             from-indigo-500 via-purple-500
             to-pink-500 border border-white text-xl
-            text-center">
+            text-center dark:bg-gray-700 dark:border-gray-700">
           {isSubmitting ? t('login.submitting') : t('login.login')}
         </button>
         {
@@ -108,7 +100,7 @@ function Login() {
         }
       </Form>
 
-      <div className="mt-4 flex justify-between gap-4">
+      <div className="mt-2 flex justify-between gap-4">
         <reactRouterDom.Link
           to="/"
           className="rounded-full
@@ -129,5 +121,8 @@ export async function loginAction({ request }) {
   const data = Object.fromEntries(formData);
   const response = await httpService.post('/auth/session', data);
   console.log(response)
+  if (response.status === 200) {
+    localStorage.setItem('sid', response.data.sid);
+  }
   return response.status === 200;
 }

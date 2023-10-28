@@ -7,74 +7,77 @@ import { httpService } from '../../../core/http-service';
 import { useForm } from 'react-hook-form';
 import { Form, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import XmlEditor from './xml-editor';
 
-function FileUploader () {
-  const {t} = useTranslation();
+function FileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [xmlContent, setContent] = useState('');
-  const {register, handleSubmit, formState: {errors}} = useForm();
+  const [xmlContent, setXmlContent] = useState('');
+  const { t } = useTranslation();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
     if (!selectedFile) {
       return;
     }
-    const form = Object.assign(data, {Payload: btoa(xmlContent), XMLFilename: selectedFile.name});
-    submitForm(form, {method: 'post'});
+    const form = Object.assign(data, { Payload: btoa(xmlContent), XMLFilename: selectedFile.name });
+    submitForm(form, { method: 'post' });
   };
 
   useEffect(() => {
     if (selectedFile) {
       const reader = new FileReader();
-      reader.onload = ( event ) => {
+      reader.onload = (event) => {
         const xmlContentConst = event.target.result;
         const formattedXml = vkbeautify.xml(xmlContentConst);
-        setContent(formattedXml);
+        setXmlContent(formattedXml);
       };
       reader.readAsText(selectedFile);
     }
   }, [selectedFile]);
 
-  const handleFileChange = ( event ) => {
-    setSelectedFile(event.target.files[ 0 ]);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = () => {
-    if (selectedFile) {
-      const reader = new FileReader();
-
-      reader.onload = ( event ) => {
-        const xmlContent = event.target.result;
-
-        const options = {
-          compact: true,
-          spaces: 4,
-        };
-
-        const xmlData = xmljs.xml2json(xmlContent, options);
-        const jsonData = JSON.parse(xmlData);
-
-        const pdf = new jsPDF();
-        pdf.text(JSON.stringify(jsonData), 10, 10); // Customize the PDF content and layout as needed
-        const pdfBlob = pdf.output('blob');
-        const filename = selectedFile.name;
-        saveAs(pdfBlob, filename + '.pdf');
-      };
-
-      reader.readAsText(selectedFile);
-    }
+  const saveAsPdf = () => {
+    const options = {
+      compact: true,
+      spaces: 4,
+    };
+    const xmlData = xmljs.xml2json(xmlContent, options);
+    const jsonData = JSON.parse(xmlData);
+    const pdf = new jsPDF();
+    pdf.text(JSON.stringify(jsonData), 10, 10); // Customize the PDF content and layout as needed
+    const pdfBlob = pdf.output('blob');
+    const filename = selectedFile.name;
+    saveAs(pdfBlob, filename + '.pdf');
   };
+
+
+  // const [xmlContentSample, setXmlContentSample] = useState('');
+
+  // const handleFileUploadSample = (event) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setXmlContentSample(e.target.result);
+  //     };
+  //     reader.readAsText(file);
+  //   }
+  // };
 
   return (
-    <main className="overflow-auto h-[calc(100vh_-_80px)] p-6 bg-black overflow-auto">
-      <div className="bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
+    <main className="h-[calc(100vh_-_80px)] p-6 bg-black overflow-hidden flex gap-4">
+      <div className="bg-gray-800 p-4 rounded shadow-lg border-right w-[300px] overflow-auto flex-grow">
 
-        <Form onSubmit={handleSubmit(onSubmit)} className=" gap-6 mb-6">
+        <Form onSubmit={handleSubmit(onSubmit)} className="gap-6 mb-6">
 
           <div className="flex gap-3 mb-6">
             {/*Vearbeitungstype*/}
             <div className="w-[250px]">
               <label htmlFor="Vearbeitungstype"
-                     className="block mb-2 text-sm font-medium text-white">
+                className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.ProcessType.label')}
               </label>
               <select
@@ -164,20 +167,20 @@ function FileUploader () {
             {/*Dokumentenanzahl*/}
             <div className="w-[250px]">
               <label htmlFor="Dokumentenanzahl"
-                     className="block mb-2 text-sm font-medium text-white">
+                className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.NumberOfDocuments.label')}
               </label>
               <input type="number" id="Dokumentenanzahl"
-                     defaultValue="1"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
+                defaultValue="1"
+                className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.NumberOfDocuments.placeholder')}
-                     {...register('Dokumentenanzahl', {
-                       required: t('dashboard.fileUploader.NumberOfDocuments.error')
-                     })}
+                placeholder={t('dashboard.fileUploader.NumberOfDocuments.placeholder')}
+                {...register('Dokumentenanzahl', {
+                  required: t('dashboard.fileUploader.NumberOfDocuments.error')
+                })}
               />
               {
                 errors.Dokumentenanzahl && errors.Dokumentenanzahl?.type === 'required' && (
@@ -220,19 +223,19 @@ function FileUploader () {
             {/*Liefersystem*/}
             <div className="w-[250px]">
               <label htmlFor="Liefersystem"
-                     className="block mb-2 text-sm font-medium text-white">
+                className="block mb-2 text-sm font-medium text-white">
                 {t('dashboard.fileUploader.DeliverySystem.label')}
               </label>
               <input type="text" id="Liefersystem"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
+                className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.DeliverySystem.placeholder')}
-                     {...register('Liefersystem', {
-                       required: t('dashboard.fileUploader.DeliverySystem.error')
-                     })}/>
+                placeholder={t('dashboard.fileUploader.DeliverySystem.placeholder')}
+                {...register('Liefersystem', {
+                  required: t('dashboard.fileUploader.DeliverySystem.error')
+                })} />
               {
                 errors.Liefersystem && errors.Liefersystem?.type === 'required' && (
                   <p className="text-[red] text-[10px] font-bold mt-1">
@@ -282,27 +285,28 @@ function FileUploader () {
 
             <div className="mb-5 relative">
               <input
+                accept=".xml"
                 onChange={handleFileChange}
                 type="file"
                 name="file"
                 id="file"
-                className="opacity-0 absolute w-full h-full"/>
+                className="opacity-0 absolute w-full h-full" />
               <label
                 htmlFor="file"
                 className="relative border-dashed border
                      border-gray-300 rounded-md flex items-center
                      justify-center p-4 text-center">
                 <div className="flex flex-col gap-3">
-                    <span className="font-normal text-gray-300 text-md">
-                     {t('dashboard.fileUploader.payload.drop')}
-                    </span>
+                  <span className="font-normal text-gray-300 text-md">
+                    {t('dashboard.fileUploader.payload.drop')}
+                  </span>
                   <span className="font-medium text-gray-300 text-lg">Or</span>
                   <span
                     className="font-normal text-gray-300 text-md
                         inline-block py-2 px-7 border border-gray-300
                         rounded-md cursor-pointer">
-                       {t('dashboard.fileUploader.payload.browse')}
-                   </span>
+                    {t('dashboard.fileUploader.payload.browse')}
+                  </span>
                 </div>
               </label>
             </div>
@@ -376,108 +380,6 @@ function FileUploader () {
             </div>
           </div>
 
-          <div className="flex gap-3 mb-6">
-            {/*Callback URL*/}
-            <div className="w-[250px]">
-              <label htmlFor="CallbackURL"
-                     className="block mb-2 text-sm font-medium text-white">
-                {t('dashboard.fileUploader.CallbackURL.label')}
-              </label>
-              <input type="text" id="CallbackURL"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
-                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                           dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.CallbackURL.placeholder')}
-                     {...register('CallbackURL', {
-                       required: t('dashboard.fileUploader.CallbackURL.error')
-                     })}/>
-              {
-                errors.CallbackURL && errors.CallbackURL?.type === 'required' && (
-                  <p className="text-[red] text-[10px] font-bold mt-1">
-                    {errors.CallbackURL?.message}
-                  </p>
-                )
-              }
-            </div>
-            {/*ErrorURL*/}
-            <div className="w-[250px]">
-              <label htmlFor="ErrorURL"
-                     className="block mb-2 text-sm font-medium text-white">
-                {t('dashboard.fileUploader.ErrorURL.label')}
-              </label>
-              <input type="text" id="ErrorURL"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
-                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                           dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.ErrorURL.placeholder')}
-                     {...register('ErrorURL', {
-                       required: t('dashboard.fileUploader.ErrorURL.error')
-                     })}/>
-              {
-                errors.ErrorURL && errors.ErrorURL?.type === 'required' && (
-                  <p className="text-[red] text-[10px] font-bold mt-1">
-                    {errors.ErrorURL?.message}
-                  </p>
-                )
-              }
-            </div>
-          </div>
-
-          <div className="flex gap-3 mb-6">
-            {/*SUID*/}
-            <div className="w-[250px]">
-              <label htmlFor="SUID"
-                     className="block mb-2 text-sm font-medium text-white">
-                {t('dashboard.fileUploader.SUID.label')}
-              </label>
-              <input type="text" id="SUID"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
-                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                           dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.SUID.placeholder')}
-                     {...register('SUID', {
-                       required: t('dashboard.fileUploader.SUID.error')
-                     })}/>
-              {
-                errors.SUID && errors.SUID?.type === 'required' && (
-                  <p className="text-[red] text-[10px] font-bold mt-1">
-                    {errors.SUID?.message}
-                  </p>
-                )
-              }
-            </div>
-            {/*Description*/}
-            <div className="w-[250px]">
-              <label htmlFor="Description"
-                     className="block mb-2 text-sm font-medium text-white">
-                {t('dashboard.fileUploader.Description.label')}
-              </label>
-              <input type="text" id="Description"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
-                          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-                          block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                           dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.Description.placeholder')}
-                     {...register('Description', {
-                       required: t('dashboard.fileUploader.Description.error')
-                     })}/>
-              {
-                errors.Description && errors.Description?.type === 'required' && (
-                  <p className="text-[red] text-[10px] font-bold mt-1">
-                    {errors.Description?.message}
-                  </p>
-                )
-              }
-            </div>
-          </div>
-
           <div className="flex gap-3">
             <button
               type="submit"
@@ -497,8 +399,8 @@ function FileUploader () {
                         font-medium rounded-lg 
                         border border-white 
                        text-sm px-5 py-2.5
-                       text-center ${( selectedFile == null ) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500 hover:border-transparent'}`}
-              onClick={handleUpload}>Download as json in PDF
+                       text-center ${(selectedFile == null) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500 hover:border-transparent'}`}
+              onClick={saveAsPdf}>Download as json in PDF
             </button>
           </div>
 
@@ -513,20 +415,14 @@ function FileUploader () {
 
       </div>
 
-      {selectedFile && (
-        <div className="bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
-          <p className="text-gray-500 mb-4 border-b-gray-500 border-b border-solid pb-4">Content of your uploaded XML
-            file</p>
-          <pre className="text-white mb-10">{xmlContent}</pre>
-        </div>
-      )}
+      <XmlEditor xmlContent={xmlContent} setXmlContent={setXmlContent} />
     </main>
   );
 }
 
 export default FileUploader;
 
-export async function uploadAction ( {request} ) {
+export async function uploadAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   console.log(data);
