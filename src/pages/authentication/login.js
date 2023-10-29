@@ -122,7 +122,7 @@ export async function loginAction({ request }) {
   const response = await httpService.post('/auth/session', data);
   console.log(response)
   if (response.status === 200) {
-    localStorage.setItem('sid', response.data.sid);
+    localStorage.setItem('token', response.data.sid);
   }
   return response.status === 200;
 }

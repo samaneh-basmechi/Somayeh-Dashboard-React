@@ -50,7 +50,7 @@ const Register = () => {
                 onClick={openRegister}
                 type="button"
                 className="block
-                    bg-black
+                    bg-gray-700 dark:bg-black
                     text-white py-2 px-2
                     rounded-md hover:bg-gradient-to-r
                     from-indigo-500 via-purple-500

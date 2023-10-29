@@ -19,14 +19,12 @@ export default function LandingPage () {
           {t('home.description')}
         </p>
 
-        <Link to="/login">
-          <button
-            type="button"
-            className="mt-8 text-white bg-black hover:bg-gradient-to-r 
-            from-indigo-500 via-purple-500 to-pink-500  rounded-md
-             text-xl px-14 py-4 text-center dark:bg-gray-700 dark:border-gray-700">
-            {t('home.button')}
-          </button>
+        <Link to="/login"
+              type="button"
+              className="mt-8 text-white bg-black hover:bg-gradient-to-r
+          from-indigo-500 via-purple-500 to-pink-500 rounded-md
+          text-xl px-14 py-4 text-center dark:bg-gray-700 dark:border-gray-700">
+          {t('home.button')}
         </Link>
 
       </div>

@@ -6,8 +6,8 @@ import 'brace/theme/twilight';
 function XmlEditor(params) {
 
   return (
-    <div className="bg-gray-800 p-4 rounded shadow-lg flex-grow overflow-hidden pb-4">
-      <p className="text-white mb-4 border-b-gray-500 border-b border-solid pb-4">Content of your uploaded XML file</p>
+    <div className="bg-gray-300 dark:bg-gray-800 p-4 rounded shadow-lg flex-grow overflow-hidden pb-4">
+      <p className="text-black dark:text-white mb-4 border-b-gray-500 border-b border-solid pb-4">Content of your uploaded XML file</p>
       <AceEditor
         mode="xml"
         theme="twilight" // Choose your preferred theme

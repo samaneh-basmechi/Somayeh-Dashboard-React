@@ -8,10 +8,21 @@ body {
   box-sizing: border-box;
 }
 
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
 
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: lightgray;
+  }
 
-
-
+  ::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 100vh;
+    border: 3px solid gray;
+  }
 
 /* admin panel styles*/
 .ml-200px {

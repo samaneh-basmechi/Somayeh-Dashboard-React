@@ -17,9 +17,9 @@ function UserInformation() {
 
     return (
         <div className="px-6">
-            <h3 className="text-white text-2xl text-center mb-4">{info.username}</h3>
-            <p className="text-white mb-4"><span className="font-bold mr-2">Email:</span> {info.email}</p>
-            <p className="text-white mb-4"><span className="font-bold mr-2">Permissions:</span>
+            <h3 className="text-black dark:text-white text-2xl text-center mb-4 font-bold">{info.username}</h3>
+            <p className="text-black dark:text-white mb-4"><span className="font-bold mr-2">Email:</span> {info.email}</p>
+            <p className="text-black dark:text-white mb-4"><span className="font-bold mr-2">Permissions:</span>
                 {info.f1Access && (
                     <span class="inline-flex items-center 
                         rounded-md bg-green-50 px-2 py-1 text-xs 

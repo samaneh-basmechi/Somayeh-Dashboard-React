@@ -40,6 +40,24 @@ const router = createBrowserRouter([
         errorElement: <FileUploader />
       },
       {
+        path: 'func-two',
+        element: <FileUploader />,
+        action: uploadAction,
+        errorElement: <FileUploader />
+      },
+      {
+        path: 'func-three',
+        element: <FileUploader />,
+        action: uploadAction,
+        errorElement: <FileUploader />
+      },
+      {
+        path: 'func-four',
+        element: <FileUploader />,
+        action: uploadAction,
+        errorElement: <FileUploader />
+      },
+      {
         path: 'users',
         element: <User />,
         errorElement: <User />

@@ -3,12 +3,12 @@ import React from 'react';
 function ChangePassword() {
 
     return (
-        <div className="bg-gray-900 p-6 rounded">
-            <h2 className="text-white text-xl font-bold">Change Password</h2>
+        <div className="bg-gray-400 dark:bg-gray-900 p-6 rounded">
+            <h2 className="text-black dark:text-white text-xl font-bold">Change Password</h2>
             <div className="mt-6 mb-2 flex gap-2 w-full">
                 <div>
                     <label htmlFor="old-password"
-                        className="block mb-2 text-sm font-medium text-white">
+                        className="block mb-2 text-sm font-medium text-black dark:text-white">
                         Old Password
                     </label>
                     <input type="text" id="old-password"
@@ -21,7 +21,7 @@ function ChangePassword() {
                 </div>
                 <div>
                     <label htmlFor="new-password"
-                        className="block mb-2 text-sm font-medium text-white">
+                        className="block mb-2 text-sm font-medium text-black dark:text-white">
                         New Password
                     </label>
                     <input type="text" id="new-password"
@@ -38,12 +38,12 @@ function ChangePassword() {
             <button
                     type="submit"
                     className="block
-                    bg-black
+                    bg-gray-700 dark:bg-black
                     mt-4
                     text-white py-2 px-2
                     rounded-md hover:bg-gradient-to-r
                     from-indigo-500 via-purple-500
-                    to-pink-500 border border-white
+                    to-pink-500 border border-gray-700 dark:border-white
                     text-center">
                     Change Password
                 </button>
