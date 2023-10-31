@@ -68,7 +68,6 @@ function SetPermission ( props ) {
                 type="checkbox"
                 id={`item-${item.name}`}
                 defaultChecked={props.userData[ item.name ]}
-                checked={item.checked}
                 onChange={() => handleCheckboxChange(item.name)}
                 className="mr-2 text-blue-400"/>
               <label
