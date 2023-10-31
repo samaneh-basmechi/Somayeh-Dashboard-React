@@ -135,30 +135,37 @@
           "title": "Register",
           "firstName": {
             "label": "FirstName",
-            "placeholder": "Enter FirstName"
+            "placeholder": "Enter FirstName",
+            "error": "Please enter your FirstName."
           },
           "lastName": {
             "label": "LastName",
-            "placeholder": "Enter LastName"
+            "placeholder": "Enter LastName",
+            "error": "Please enter your LastName."
           },
           "userName": {
             "label": "UserName",
-            "placeholder": "Enter UserName"
+            "placeholder": "Enter UserName",
+            "error": "Please enter your UserName."
           },
           "email": {
             "label": "Email",
-            "placeholder": "Enter Email"
+            "placeholder": "Enter Email",
+            "error": "Please enter your Email."
           },
           "password": {
             "label": "Password",
-            "placeholder": "Enter Password"
+            "placeholder": "Enter Password",
+            "error": "Please enter your Password."
           },
           "confirmPassword": {
             "label": "Confirm Password",
-            "placeholder": "Enter Confirm Password"
+            "placeholder": "Enter Confirm Password",
+            "error": "Please enter your Confirm Password."
           },
           "permissions": "Permissions",
-          "submit": "Register"
+          "submit": "Register",
+          "submitting": "Please enter your FirstName."
         }
       }
     }

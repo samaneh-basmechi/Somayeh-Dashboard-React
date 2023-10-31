@@ -36,7 +36,6 @@ function Login () {
       </div>
 
       <Form onSubmit={handleSubmit(onSubmit)}>
-
         <div className="mb-4">
           <label className="block text-white text-sm font-normal mb-2">
             {t('login.username')}

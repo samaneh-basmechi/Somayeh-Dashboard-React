@@ -136,33 +136,38 @@
           "title": "Registrieren",
           "firstName": {
             "label": "Vorname",
-            "placeholder": "Bitte Vornamen eingeben"
+            "placeholder": "Bitte Vornamen eingeben",
+            "error": "Bitte geben Sie Ihren Vornamen ein.."
           },
           "lastName": {
             "label": "Familienname",
-            "placeholder": "Nachnamen eingeben"
+            "placeholder": "Nachnamen eingeben",
+            "error": "Bitte geben Sie ihren Nachnamen ein."
           },
           "userName": {
             "label": "Nutzername",
-            "placeholder": "Geben Sie den Benutzernamen ein"
+            "placeholder": "Geben Sie den Benutzernamen ein",
+            "error": "Bitte geben Sie Ihren Benutzernamen ein."
           },
           "email": {
             "label": "Email",
-            "placeholder": "Email eingeben"
+            "placeholder": "Email eingeben",
+            "error": "Bitte geben Sie ihre E-Mail-Adresse ein."
           },
           "password": {
             "label": "Passwort",
-            "placeholder": "Passwort eingeben"
+            "placeholder": "Passwort eingeben",
+            "error": "Bitte geben Sie Ihr Passwort ein."
           },
           "confirmPassword": {
             "label": "Bestätige das Passwort",
-            "placeholder": "Geben Sie das Bestätigungskennwort ein"
+            "placeholder": "Geben Sie das Bestätigungskennwort ein",
+            "error": "Bitte geben Sie Ihr Bestätigungspasswort ein."
           },
           "permissions": "Berechtigungen",
           "submit": "Registrieren"
         }
       }
-
     }
   }
 }

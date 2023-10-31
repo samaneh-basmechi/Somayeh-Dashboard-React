@@ -29,10 +29,14 @@ const UserTable = () => {
   };
 
   useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
     httpService.get('/users')
       .then(response => setUsers(response.data))
       .catch(error => console.error(error));
-  }, []);
+  };
 
   return (
     <main className="overflow-auto h-[calc(100vh_-_80px)] p-4 bg-white dark:bg-black overflow-hidden">
@@ -41,7 +45,7 @@ const UserTable = () => {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="dark:shadow overflow-hidden sm:rounded-lg">
               <div className="flex justify-end mb-4">
-                <Register/>
+                <Register getUser={getUser}/>
               </div>
               <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
                 <table className="min-w-full leading-normal">
