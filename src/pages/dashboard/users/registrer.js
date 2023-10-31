@@ -4,24 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Form, useNavigation, useRouteError } from 'react-router-dom';
 import { httpService } from '../../../core/http-service';
+import CUSTOM_STYLE from './modal-style';
 
-const customStyles = {
-  overlay: {
-    backgroundColor: 'rgb(255 255 255 / 48%)',
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'rgb(17 24 39)',
-    borderColor: 'rgb(17 24 39)',
-  },
-};
-
-const Register = ( params ) => {
+const Register = ( props ) => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
   const {t} = useTranslation();
   const {register, handleSubmit, formState: {errors}} = useForm();
@@ -37,7 +22,7 @@ const Register = ( params ) => {
     httpService.post('/users', data, config)
       .then(response => {
           console.log(response.data);
-          params.getUser();
+          props.getUser();
           closeRegister();
         }
       ).catch(error => console.error(error));
@@ -86,7 +71,7 @@ const Register = ( params ) => {
       <Modal
         isOpen={openRegisterModal}
         onRequestClose={closeRegister}
-        style={customStyles}
+        style={CUSTOM_STYLE}
         contentLabel="Example Modal">
         <Form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 p-2 rounded-lg">
           <h2 className="text-white text-2xl font-bold">
@@ -241,8 +226,7 @@ const Register = ( params ) => {
                   onChange={() => handleCheckboxChange(item.name)}
                   className="mr-2 text-blue-400"/>
                 <label
-                  htmlFor={`item-${item.name}`}
-                  className={item.checked ? 'line-through' : ''}>
+                  htmlFor={`item-${item.name}`}>
                   {item.text}
                 </label>
               </li>

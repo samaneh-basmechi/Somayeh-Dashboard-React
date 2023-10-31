@@ -1,22 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-
-const customStyles = {
-    overlay: {
-        backgroundColor: 'rgb(255 255 255 / 48%)',
-    },
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: 'rgb(17 24 39)',
-        borderColor: 'rgb(17 24 39)',
-    },
-};
-
+import CUSTOM_STYLE from './modal-style';
 
 function ResetPassword(props) {
 
@@ -24,7 +8,7 @@ function ResetPassword(props) {
         <Modal
             isOpen={props.openResetPasswordModal}
             onRequestClose={props.closeResetPassword}
-            style={customStyles}
+            style={CUSTOM_STYLE}
             contentLabel="Example Modal">
             <div className="bg-gray-900 p-2 rounded-lg">
                 <h2 className="text-white text-2xl">Reset Password</h2>
