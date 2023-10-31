@@ -4,7 +4,7 @@ import i18n from "../../core/i18n";
 
 const AppContext = createContext();
 const initialState = {
-    language: localStorage.getItem('language') || 'en'
+    language: localStorage.getItem('language') || 'de'
 }
 
 const AppProvider = ({ children }) => {

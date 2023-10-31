@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { httpService } from '../../core/http-service';
-import { Form, useSubmit, useNavigation, useActionData, useNavigate, useRouteError } from 'react-router-dom';
+import { Form, useSubmit, useNavigation, useActionData, useNavigate, useRouteError , redirect} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-function Login() {
-  const { t } = useTranslation();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+function Login () {
+  const {t} = useTranslation();
+  const {register, handleSubmit, formState: {errors}} = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
-    submitForm(data, { method: 'post' });
+    submitForm(data, {method: 'post'});
   };
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== 'idle';
@@ -49,7 +49,7 @@ function Login() {
             rounded-md border border-gray-300 
             focus:outline-none focus:border-violet-500 
             ${errors.username && 'border border-solid border-[red]'}`}
-            placeholder="Username" />
+            placeholder="Username"/>
           <div className="text-[red] text-[10px] font-bold mt-1 h-[8px]">
             {errors.username?.message}
           </div>
@@ -60,13 +60,13 @@ function Login() {
             {t('login.password')}
           </label>
           <input
-            {...register('password', { required: t('login.passwordError') })}
+            {...register('password', {required: t('login.passwordError')})}
             className={`w-full px-3 py-2 
             rounded-md border border-gray-300 
             focus:outline-none focus:border-violet-500 
             ${errors.password && 'border border-solid border-[red]'}`}
             type="password"
-            placeholder="Password" />
+            placeholder="Password"/>
           <div className="text-[red] text-[10px] font-bold mt-1 h-[8px]">
             {errors.password?.message}
           </div>
@@ -93,7 +93,7 @@ function Login() {
         }
         {
           routeErrors?.response?.data?.length > 0 && (
-            routeErrors.response.data.map((error) => {
+            routeErrors.response.data.map(( error ) => {
               return <p>{error.description}</p>;
             })
           )
@@ -116,13 +116,13 @@ function Login() {
 
 export default Login;
 
-export async function loginAction({ request }) {
+export async function loginAction ( {request} ) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const response = await httpService.post('/auth/session', data);
-  console.log(response)
   if (response.status === 200) {
-    localStorage.setItem('token', response.data.sid);
+    localStorage.setItem('token', response?.data?.sid);
+    return redirect('/dashboard');
   }
   return response.status === 200;
 }

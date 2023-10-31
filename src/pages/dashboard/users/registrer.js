@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { useTranslation } from 'react-i18next';
 
 const customStyles = {
     overlay: {
@@ -20,6 +21,7 @@ const customStyles = {
 
 const Register = () => {
     const [openRegisterModal, setOpenRegisterModal] = useState(false);
+    const {t} = useTranslation();
 
     const openRegister = () => {
         setOpenRegisterModal(true);
@@ -57,7 +59,7 @@ const Register = () => {
                     to-pink-500 border border-white
                     text-center">
                 +
-                Register new user
+                {t('dashboard.user.register.button')}
             </button>
             <Modal
                 isOpen={openRegisterModal}
@@ -65,12 +67,14 @@ const Register = () => {
                 style={customStyles}
                 contentLabel="Example Modal">
                 <div className="bg-gray-900 p-2 rounded-lg">
-                    <h2 className="text-white text-2xl font-bold">Register</h2>
-                    <div className="flex gap-4 mt-4">
-                        <div>
+                    <h2 className="text-white text-2xl font-bold">
+                        {t('dashboard.user.register.modal.title')}
+                    </h2>
+                    <div className="flex gap-4 mt-4 mb-4">
+                        <div className="flex-grow">
                             <label htmlFor="FirstName"
                                 className="block mb-2 text-sm font-medium text-white">
-                                FirstName
+                                {t('dashboard.user.register.modal.firstName.label')}
                             </label>
                             <input type="text" id="FirstName"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -78,13 +82,12 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter firstName" />
+                                placeholder={t('dashboard.user.register.modal.firstName.placeholder')} />
                         </div>
-
-                        <div>
+                        <div className="flex-grow">
                             <label htmlFor="LastName"
                                 className="block mb-2 text-sm font-medium text-white">
-                                LastName
+                                {t('dashboard.user.register.modal.lastName.label')}
                             </label>
                             <input type="text" id="LastName"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -92,14 +95,14 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter LastName" />
+                                placeholder=  {t('dashboard.user.register.modal.lastName.placeholder')} />
                         </div>
                     </div>
-                    <div className="flex gap-4">
-                        <div>
+                    <div className="flex gap-4 mb-4">
+                        <div className="flex-grow">
                             <label htmlFor="Username"
                                 className="block mb-2 text-sm font-medium text-white">
-                                Username
+                                {t('dashboard.user.register.modal.userName.label')}
                             </label>
                             <input type="text" id="Username"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -107,13 +110,12 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter Username" />
+                                placeholder= {t('dashboard.user.register.modal.username.placeholder')} />
                         </div>
-
-                        <div>
+                        <div className="flex-grow">
                             <label htmlFor="Email"
                                 className="block mb-2 text-sm font-medium text-white">
-                                Email
+                                {t('dashboard.user.register.modal.email.label')}
                             </label>
                             <input type="text" id="Email"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -121,14 +123,14 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter Email" />
+                                placeholder= {t('dashboard.user.register.modal.email.placeholder')} />
                         </div>
                     </div>
                     <div className="flex gap-4 mb-4">
-                        <div>
+                        <div className="flex-grow">
                             <label htmlFor="Password"
                                 className="block mb-2 text-sm font-medium text-white">
-                                Password
+                                {t('dashboard.user.register.modal.password.label')}
                             </label>
                             <input type="text" id="Password"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -136,13 +138,12 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter Password" />
+                                placeholder= {t('dashboard.user.register.modal.password.placeholder')} />
                         </div>
-
-                        <div>
+                        <div className="flex-grow">
                             <label htmlFor="Confirm-Password"
                                 className="block mb-2 text-sm font-medium text-white">
-                                Confirm Password
+                                {t('dashboard.user.register.modal.confirmPassword.label')}
                             </label>
                             <input type="text" id="Confirm-Password"
                                 className="bg-gray-50 border border-gray-300 text-gray-900
@@ -150,7 +151,7 @@ const Register = () => {
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                                placeholder="Enter Confirm Password" />
+                                placeholder={t('dashboard.user.register.modal.confirmPassword.placeholder')} />
                         </div>
                     </div>
                     <hr/>

@@ -121,6 +121,46 @@
         "error": "Please enter Description.",
         "placeholder": "SUID"
       }
+    },
+    "user": {
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "permissions": "Permissions",
+        "resetPassword": "Reset Password"
+      },
+      "register": {
+        "button": "Register new user",
+        "modal": {
+          "title": "Register",
+          "firstName": {
+            "label": "FirstName",
+            "placeholder": "Enter FirstName"
+          },
+          "lastName": {
+            "label": "LastName",
+            "placeholder": "Enter LastName"
+          },
+          "userName": {
+            "label": "UserName",
+            "placeholder": "Enter UserName"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Enter Email"
+          },
+          "password": {
+            "label": "Password",
+            "placeholder": "Enter Password"
+          },
+          "confirmPassword": {
+            "label": "Confirm Password",
+            "placeholder": "Enter Confirm Password"
+          },
+          "permissions": "Permissions",
+          "submit": "Register"
+        }
+      }
     }
   }
 }

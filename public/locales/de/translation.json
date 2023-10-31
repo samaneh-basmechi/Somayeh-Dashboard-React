@@ -122,6 +122,47 @@
         "error": "Bitte geben Sie die Description.",
         "placeholder": "Description"
       }
+    },
+    "user": {
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "permissions": "Berechtigungen",
+        "resetPassword": "resetPassword"
+      },
+      "register": {
+        "button": "Neuen Benutzer registrieren",
+        "modal": {
+          "title": "Registrieren",
+          "firstName": {
+            "label": "Vorname",
+            "placeholder": "Bitte Vornamen eingeben"
+          },
+          "lastName": {
+            "label": "Familienname",
+            "placeholder": "Nachnamen eingeben"
+          },
+          "userName": {
+            "label": "Nutzername",
+            "placeholder": "Geben Sie den Benutzernamen ein"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Email eingeben"
+          },
+          "password": {
+            "label": "Passwort",
+            "placeholder": "Passwort eingeben"
+          },
+          "confirmPassword": {
+            "label": "Bestätige das Passwort",
+            "placeholder": "Geben Sie das Bestätigungskennwort ein"
+          },
+          "permissions": "Berechtigungen",
+          "submit": "Registrieren"
+        }
+      }
+
     }
   }
 }
