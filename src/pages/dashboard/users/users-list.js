@@ -101,8 +101,8 @@ const UserTable = () => {
                   </thead>
                   <tbody>
 
-                  {users.map(( item ) => (
-                    <tr className="dark:bg-gray-800 dark:text-white bg-white">
+                  {users.map(( item , index ) => (
+                    <tr key={index} className="dark:bg-gray-800 dark:text-white bg-white">
                       <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         {item.id}
                       </td>

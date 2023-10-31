@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 function DashboardHeader ( params ) {
   return (
     <header className="flex items-center
-    h-20 px-6 sm:px-10 bg-gray-300
-    dark:border-b-gray-600 border-b border-solid dark:bg-black">
+    h-20 px-6 sm:px-10 bg-white
+    border-b-[black] border-b border-solid
+    dark:border-b-gray-600 dark:bg-black">
 
       <div className="mr-8 cursor-pointer"
            onClick={params.toggleMenu}>

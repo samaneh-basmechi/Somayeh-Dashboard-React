@@ -59,8 +59,8 @@ const Register = ( props ) => {
         onClick={openRegister}
         type="button"
         className="block
-                    bg-gray-700 dark:bg-black
-                    text-white py-2 px-2
+                    text-white bg-black
+                    dark:bg-black  py-2 px-2
                     rounded-md hover:bg-gradient-to-r
                     from-indigo-500 via-purple-500
                     to-pink-500 border border-white

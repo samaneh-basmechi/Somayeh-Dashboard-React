@@ -17,13 +17,15 @@ function DashboardSidebar ( params ) {
   return (
     <aside
       className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
-      <span className="inline-flex items-center justify-center h-20 w-full bg-gray-300 dark:bg-gray-800 ">
+      <span
+        className="inline-flex items-center justify-center h-20 w-full bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
         {params.menu && <span className="text-black dark:text-gray-300 text-xl">
           {t('dashboard.sidebar.title')}
         </span>}
       </span>
 
-      <div className="flex-grow flex flex-col justify-between text-gray-500 bg-gray-300 dark:bg-gray-800 ">
+      <div
+        className="flex-grow flex flex-col justify-between text-gray-500 bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
         <nav className="flex flex-col mx-4 my-6 space-y-4">
           <NavLink
             to="users"
