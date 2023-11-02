@@ -184,6 +184,33 @@
         "label": "Neues Kennwort",
         "placeholder": "Neues Passwort festlegen"
       }
+    },
+    "profile": {
+      "email": "Email:",
+      "permissions": "Berechtigungen:",
+      "access": {
+        "f1": "Ermöglichen Sie das Hochladen von Funktion eins",
+        "f2": "Ermöglichen Sie das Hochladen von Funktion zwei",
+        "f3": "Ermöglichen Sie das Hochladen von Funktion drei",
+        "f4": "Ermöglichen Sie das Hochladen von Funktion vierr"
+      },
+      "changePasswordTitle": "Kennwort ändern",
+      "oldPassword": {
+        "label": "Altes Passwort",
+        "error": "Bitte geben Sie Ihr altes Passwort ein",
+        "placeholder": "Geben Sie Ihr altes Passwort ein"
+      },
+      "newPassword": {
+        "label": "Neues Kennwort",
+        "error": "Bitte geben Sie Ihr neues Passwort ein.",
+        "placeholder": "Gib dein neues Passwort ein"
+      },
+      "confirmNewPassword": {
+        "label": "Bestätige neues Passwort",
+        "error": "Bitte geben Sie Ihr neues Passwort zur Bestätigung ein.",
+        "placeholder": "Geben Sie Ihr neues Passwort zur Bestätigung ein"
+      },
+      "submit": "Kennwort ändern"
     }
   }
 }

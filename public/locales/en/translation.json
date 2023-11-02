@@ -184,6 +184,33 @@
         "label": "New Password",
         "placeholder": "Set New Password"
       }
+    },
+    "profile": {
+      "email": "Email:",
+      "permissions": "Permissions:",
+      "access": {
+        "f1": "Allow to Upload function one",
+        "f2": "Allow to Upload function two",
+        "f3": "Allow to Upload function three",
+        "f4": "Allow to Upload function four"
+      },
+      "changePasswordTitle": "Change Password",
+      "oldPassword": {
+        "label": "Old Password",
+        "error": "Please Enter your old password",
+        "placeholder": "Enter your old password"
+      },
+      "newPassword": {
+        "label": "new Password",
+        "error": "Please Enter your new password.",
+        "placeholder": "Enter your new password"
+      },
+      "confirmNewPassword": {
+        "label": "Confirm new Password",
+        "error": "Please Enter your confirm new password.",
+        "placeholder": "Enter your confirm new password"
+      },
+      "submit": "Change Password"
     }
   }
 }

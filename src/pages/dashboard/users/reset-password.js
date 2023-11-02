@@ -20,7 +20,7 @@ function ResetPassword ( props ) {
         Authorization: `Bearer ${token}`,
       },
     };
-    httpService.post(`/users/${props.userData.id}/reset-password`, data, config)
+    httpService.patch(`/users/${props.userData.id}/reset-password`, data, config)
       .finally(() => reset())
       .then(response => {
           console.log(response.data);

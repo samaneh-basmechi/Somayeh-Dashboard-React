@@ -1,33 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { httpService } from '../../../core/http-service.js';
-import SetPermission from './set-permissions.js';
+import UpdatePermissions from './update-permissions.js';
 import ResetPassword from './reset-password.js';
 import Register from './registrer.js';
 import { useTranslation } from 'react-i18next';
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
-  const [openSetPermissionModal, setOpenSetPermissionModal] = useState(false);
   const {t} = useTranslation();
   const [userSelected, setUserSelected] = useState([]);
 
-  const openSetPermission = ( item ) => {
-    setOpenSetPermissionModal(true);
-  };
-
-  const closeSetPermission = () => {
-    setOpenSetPermissionModal(false);
-  };
+  const [openUpdatePermissionModal, setOpenUpdatePermissionModal] = useState(false);
+  const openUpdatePermission = ( item ) => {setOpenUpdatePermissionModal(true);};
+  const closeUpdatePermission = () => {setOpenUpdatePermissionModal(false);};
 
   const [openResetPasswordModal, setOpenResetPasswordModal] = useState(false);
-
-  const openResetPassword = () => {
-    setOpenResetPasswordModal(true);
-  };
-
-  const closeResetPassword = () => {
-    setOpenResetPasswordModal(false);
-  };
+  const openResetPassword = () => {setOpenResetPasswordModal(true);};
+  const closeResetPassword = () => {setOpenResetPasswordModal(false);};
 
   useEffect(() => {
     getUser();
@@ -101,10 +90,10 @@ const UserTable = () => {
                   </thead>
                   <tbody>
 
-                  {users.map(( item , index ) => (
+                  {users.map(( item, index ) => (
                     <tr key={index} className="dark:bg-gray-800 dark:text-white bg-white">
                       <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
-                        {item.id}
+                        {index + 1}
                       </td>
                       <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         {item.firstName + ' ' + item.lastName}
@@ -115,7 +104,7 @@ const UserTable = () => {
                       <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         <svg
                           onClick={() => {
-                            openSetPermission();
+                            openUpdatePermission();
                             setUserSelected(item);
                           }}
                           className="w-8 h-8 m-auto cursor-pointer fill-black dark:fill-white"
@@ -151,11 +140,11 @@ const UserTable = () => {
           </div>
         </div>
       </div>
-      <SetPermission
+      <UpdatePermissions
         userData={userSelected}
         getUser={getUser}
-        openSetPermissionModal={openSetPermissionModal}
-        closeSetPermission={closeSetPermission}/>
+        openUpdatePermissionModal={openUpdatePermissionModal}
+        closeUpdatePermission={closeUpdatePermission}/>
       <ResetPassword
         userData={userSelected}
         openResetPasswordModal={openResetPasswordModal}

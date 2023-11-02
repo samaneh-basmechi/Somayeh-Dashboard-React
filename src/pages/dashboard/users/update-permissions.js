@@ -6,7 +6,7 @@ import { httpService } from '../../../core/http-service';
 import { Form, useNavigation, useRouteError } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-function SetPermission ( props ) {
+function UpdatePermissions ( props ) {
 
   const [items, setItems] = useState([
     {name: 'f1Access', text: 'FunctionOne', checked: false},
@@ -28,11 +28,11 @@ function SetPermission ( props ) {
         Authorization: `Bearer ${token}`,
       },
     };
-    httpService.post(`/users/${props.userData.id}/permissions`, payload, config)
+    httpService.patch(`/users/${props.userData.id}/permissions`, payload, config)
       .then(response => {
           console.log(response.data);
           props.getUser();
-          props.closeSetPermission();
+          props.closeUpdatePermission();
         }
       ).catch(error => console.error(error));
   };
@@ -51,8 +51,8 @@ function SetPermission ( props ) {
 
   return (
     <Modal
-      isOpen={props.openSetPermissionModal}
-      onRequestClose={props.closeSetPermission}
+      isOpen={props.openUpdatePermissionModal}
+      onRequestClose={props.closeUpdatePermission}
       style={CUSTOM_STYLE}
       contentLabel="Example Modal">
       <Form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 p-2 rounded-lg">
@@ -105,4 +105,4 @@ function SetPermission ( props ) {
   );
 }
 
-export default SetPermission;
+export default UpdatePermissions;

@@ -6,7 +6,7 @@ function Profile() {
 
     return (
         <main className="overflow-auto h-[calc(100vh_-_80px)] p-6 bg-white dark:bg-black overflow-auto">
-            <div className="bg-gray-300 dark:bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
+            <div className="bg-white border-[black] border border-solid dark:bg-gray-800 p-4 rounded overflow-hidden shadow-lg">
                 <UserInformation />
                 <hr className="mb-4" />
                 <ChangePassword />
