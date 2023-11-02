@@ -167,6 +167,22 @@
           "submit": "Register",
           "submitting": "Please enter your FirstName."
         }
+      },
+      "permissions": {
+        "title": "User Permissions",
+        "submit": "Change permissions",
+        "items": {
+          "FunctionOne": "Function one",
+          "FunctionTwo": "Function two",
+          "FunctionThree": "Function three",
+          "FunctionFour": "Function four"
+        }
+      },
+      "resetPassword": {
+        "title": "Reset Password",
+        "submit": "Reset Password",
+        "label": "New Password",
+        "placeholder": "Set New Password"
       }
     }
   }

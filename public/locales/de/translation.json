@@ -167,6 +167,22 @@
           "permissions": "Berechtigungen",
           "submit": "Registrieren"
         }
+      },
+      "permissions": {
+        "title": "Benutzerberechtigungen",
+        "submit": "Berechtigungen ändern",
+        "items": {
+          "FunctionOne": "Funktion eins",
+          "FunctionTwo": "Funktion zwei",
+          "FunctionThree": "Funktion drei",
+          "FunctionFour": "Funktion vier"
+        }
+      },
+      "resetPassword": {
+        "title": "Passwort zurücksetzen",
+        "submit": "Passwort zurücksetzen",
+        "label": "Neues Kennwort",
+        "placeholder": "Neues Passwort festlegen"
       }
     }
   }

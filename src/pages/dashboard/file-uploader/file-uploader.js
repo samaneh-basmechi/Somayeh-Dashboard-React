@@ -54,8 +54,9 @@ function FileUploader () {
   };
 
   return (
-    <main className="h-[calc(100vh_-_80px)] p-6 bg-white dark:bg-black overflow-hidden flex gap-4">
-      <div className="bg-gray-300 dark:bg-gray-800 p-4
+    <main
+      className="h-[calc(100vh_-_80px)] p-6 bg-white dark:bg-black overflow-hidden flex gap-4">
+      <div className=" bg-white border-[black] border border-solid dark:bg-gray-800 p-4
       rounded shadow-lg border-right w-[300px] overflow-auto
       flex-grow">
 

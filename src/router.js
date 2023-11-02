@@ -1,75 +1,74 @@
-import { createBrowserRouter, BrowserRouter as Router } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import Login, { loginAction } from './pages/authentication/login';
 import LandingPage from './pages/landing/landing-page';
 import LandingLayout from './pages/landing/landing-layout';
 import DashboardLayout from './pages/dashboard/dashboard-layout';
 import FileUploader, { uploadAction } from './pages/dashboard/file-uploader/file-uploader';
-import User from './pages/dashboard/users/user';
 import Profile from './pages/dashboard/profile/profile';
+import UserList from './pages/dashboard/users/users-list';
 
 const router = createBrowserRouter([
   {
-    element: <LandingLayout />,
+    element: <LandingLayout/>,
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: <Login/>,
         action: loginAction,
-        errorElement: <Login />
+        errorElement: <Login/>
       },
       {
         path: '',
-        element: <LandingPage />
+        element: <LandingPage/>
       },
     ]
   },
   {
     path: 'dashboard',
-    element: <DashboardLayout />,
+    element: <DashboardLayout/>,
     children: [
       {
-        element: <User />,
+        element: <UserList/>,
         action: uploadAction,
-        errorElement: <User />,
+        errorElement: <UserList/>,
         index: true
       },
       {
         path: 'func-one',
-        element: <FileUploader />,
+        element: <FileUploader/>,
         action: uploadAction,
-        errorElement: <FileUploader />
+        errorElement: <FileUploader/>
       },
       {
         path: 'func-two',
-        element: <FileUploader />,
+        element: <FileUploader/>,
         action: uploadAction,
-        errorElement: <FileUploader />
+        errorElement: <FileUploader/>
       },
       {
         path: 'func-three',
-        element: <FileUploader />,
+        element: <FileUploader/>,
         action: uploadAction,
-        errorElement: <FileUploader />
+        errorElement: <FileUploader/>
       },
       {
         path: 'func-four',
-        element: <FileUploader />,
+        element: <FileUploader/>,
         action: uploadAction,
-        errorElement: <FileUploader />
+        errorElement: <FileUploader/>
       },
       {
         path: 'users',
-        element: <User />,
-        errorElement: <User />
+        element: <UserList/>,
+        errorElement: <UserList/>
       },
       {
         path: 'profile',
-        element: <Profile />,
-        errorElement: <Profile />
+        element: <Profile/>,
+        errorElement: <Profile/>
       }
     ]
   }
-
 ]);
 
 export default router;

@@ -9,10 +9,10 @@ import { useTranslation } from 'react-i18next';
 function SetPermission ( props ) {
 
   const [items, setItems] = useState([
-    {name: 'f1Access', text: 'Function one', checked: false},
-    {name: 'f2Access', text: 'Function two', checked: false},
-    {name: 'f3Access', text: 'Function three', checked: false},
-    {name: 'f4Access', text: 'Function four', checked: false},
+    {name: 'f1Access', text: 'FunctionOne', checked: false},
+    {name: 'f2Access', text: 'FunctionTwo', checked: false},
+    {name: 'f3Access', text: 'FunctionThree', checked: false},
+    {name: 'f4Access', text: 'FunctionFour', checked: false},
   ]);
 
   const {t} = useTranslation();
@@ -56,7 +56,9 @@ function SetPermission ( props ) {
       style={CUSTOM_STYLE}
       contentLabel="Example Modal">
       <Form onSubmit={handleSubmit(onSubmit)} className="bg-gray-900 p-2 rounded-lg">
-        <h2 className="text-white text-2xl">List with Permissions</h2>
+        <h2 className="text-white text-2xl">
+          {t('dashboard.user.permissions.title')}
+        </h2>
         <ul className="mt-6 mb-6">
           {props.userData.f1Access}
           {items.map(( item ) => (
@@ -72,7 +74,7 @@ function SetPermission ( props ) {
                 className="mr-2 text-blue-400"/>
               <label
                 htmlFor={`item-${item.name}`}>
-                {item.text}
+                {t(`dashboard.user.permissions.items.${item.text}`)}
               </label>
             </li>
           ))}
@@ -88,7 +90,7 @@ function SetPermission ( props ) {
                     from-indigo-500 via-purple-500
                     to-pink-500 border border-white
                     text-center">
-          Change permissions
+          {t('dashboard.user.permissions.submit')}
           {isSubmitting ? t('dashboard.user.register.modal.submitting') : t('dashboard.user.register.modal.submit')}
         </button>
         {

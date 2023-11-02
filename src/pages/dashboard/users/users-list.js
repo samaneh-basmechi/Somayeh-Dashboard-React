@@ -132,7 +132,10 @@ const UserTable = () => {
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         <svg
-                          onClick={openResetPassword}
+                          onClick={() => {
+                            openResetPassword();
+                            setUserSelected(item);
+                          }}
                           className="w-8 h-8 m-auto cursor-pointer fill-black dark:fill-white"
                           xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px">
                           <path
@@ -154,6 +157,7 @@ const UserTable = () => {
         openSetPermissionModal={openSetPermissionModal}
         closeSetPermission={closeSetPermission}/>
       <ResetPassword
+        userData={userSelected}
         openResetPasswordModal={openResetPasswordModal}
         closeResetPassword={closeResetPassword}/>
     </main>
