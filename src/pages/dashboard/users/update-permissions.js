@@ -21,12 +21,11 @@ function UpdatePermissions ( props ) {
 
   const onSubmit = ( data ) => {
     const payload = Object.assign({isAdmin: false, ...data});
-    console.log(payload);
     const token = localStorage.getItem('token');
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        access_token: token,
+      }
     };
     httpService.patch(`/users/${props.userData.id}/permissions`, payload, config)
       .then(response => {

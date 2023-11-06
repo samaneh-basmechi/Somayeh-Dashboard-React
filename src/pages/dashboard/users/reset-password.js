@@ -17,13 +17,11 @@ function ResetPassword ( props ) {
     const token = localStorage.getItem('token');
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        access_token: token,
       },
     };
     httpService.patch(`/users/${props.userData.id}/reset-password`, data, config)
-      .finally(() => reset())
       .then(response => {
-          console.log(response.data);
           props.getUser();
           props.closeResetPassword();
         }

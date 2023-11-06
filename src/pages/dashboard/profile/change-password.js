@@ -13,7 +13,7 @@ const ChangePassword = () => {
     const token = localStorage.getItem('token');
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        access_token: token,
       },
     };
     httpService.patch('/users/me/change-password', data, config)

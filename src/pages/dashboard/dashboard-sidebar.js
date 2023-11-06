@@ -29,6 +29,7 @@ function DashboardSidebar ( params ) {
         <nav className="flex flex-col mx-4 my-6 space-y-4">
           <NavLink
             to="users"
+            
             className={` text-black inline-flex items-center py-3 
             hover:bg-gray-500 focus:bg-gray-400 dark:text-white
              rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}>

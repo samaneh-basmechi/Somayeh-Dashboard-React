@@ -12,16 +12,15 @@ const Register = ( props ) => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const onSubmit = ( data ) => {
     delete data[ 'confirmPassword' ];
-    console.log(data);
+    const payload = Object.assign({isAdmin: false} , data);
     const token = localStorage.getItem('token');
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        access_token: token,
       },
     };
-    httpService.post('/users', data, config)
+    httpService.post('/users', payload, config)
       .then(response => {
-          console.log(response.data);
           props.getUser();
           closeRegister();
         }

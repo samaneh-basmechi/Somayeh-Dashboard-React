@@ -11,23 +11,13 @@ const UserInformation = () => {
   }, []);
 
   const getUserInfo = () => {
-    const fakeData =
-      {
-        'id': 2,
-        'username': 'samaneh_bsm',
-        'email': 'samaneh@gmail.com',
-        'isAdmin': false,
-        'f1Access': true,
-        'f2Access': true,
-        'f3Access': false,
-        'f4Access': false,
-        'isActive': false,
-        'activatedAt': null,
-        'createdAt': '2023-10-28T16:55:19.000Z'
-      };
-    setUserInfo(fakeData);
-    console.log(userInfo);
-    httpService.get('/me')
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
+    httpService.get('/users/me' , config)
       .then(response => {
         setUserInfo(response.data);
       })

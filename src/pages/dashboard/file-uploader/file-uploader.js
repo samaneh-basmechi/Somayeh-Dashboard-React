@@ -9,24 +9,24 @@ import { Form, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import XmlEditor from './xml-editor';
 
-function FileUploader () {
+function FileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [xmlContent, setXmlContent] = useState('');
-  const {t} = useTranslation();
-  const {register, handleSubmit, formState: {errors}} = useForm();
+  const { t } = useTranslation();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const submitForm = useSubmit();
   const onSubmit = data => {
     if (!selectedFile) {
       return;
     }
-    const form = Object.assign(data, {Payload: btoa(xmlContent), XMLFilename: selectedFile.name});
-    submitForm(form, {method: 'post'});
+    const form = Object.assign(data, { Payload: btoa(xmlContent), XMLFilename: selectedFile.name });
+    submitForm(form, { method: 'post' });
   };
 
   useEffect(() => {
     if (selectedFile) {
       const reader = new FileReader();
-      reader.onload = ( event ) => {
+      reader.onload = (event) => {
         const xmlContentConst = event.target.result;
         const formattedXml = vkbeautify.xml(xmlContentConst);
         setXmlContent(formattedXml);
@@ -35,8 +35,8 @@ function FileUploader () {
     }
   }, [selectedFile]);
 
-  const handleFileChange = ( event ) => {
-    setSelectedFile(event.target.files[ 0 ]);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
   const saveAsPdf = () => {
@@ -66,7 +66,7 @@ function FileUploader () {
             {/*Vearbeitungstype*/}
             <div className="w-[250px]">
               <label htmlFor="Vearbeitungstype"
-                     className="block mb-2 text-sm font-medium text-black dark:text-white">
+                className="block mb-2 text-sm font-medium text-black dark:text-white">
                 {t('dashboard.fileUploader.ProcessType.label')}
               </label>
               <select
@@ -147,20 +147,20 @@ function FileUploader () {
             {/*Dokumentenanzahl*/}
             <div className="w-[250px]">
               <label htmlFor="Dokumentenanzahl"
-                     className="block mb-2 text-sm font-medium text-black dark:text-white">
+                className="block mb-2 text-sm font-medium text-black dark:text-white">
                 {t('dashboard.fileUploader.NumberOfDocuments.label')}
               </label>
               <input type="number" id="Dokumentenanzahl"
-                     defaultValue="1"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
+                defaultValue="1"
+                className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.NumberOfDocuments.placeholder')}
-                     {...register('Dokumentenanzahl', {
-                       required: t('dashboard.fileUploader.NumberOfDocuments.error')
-                     })}/>
+                placeholder={t('dashboard.fileUploader.NumberOfDocuments.placeholder')}
+                {...register('Dokumentenanzahl', {
+                  required: t('dashboard.fileUploader.NumberOfDocuments.error')
+                })} />
               <div className="h-[8px] text-[red] text-[10px] font-bold mt-1">
                 {errors.Dokumentenanzahl?.message}
               </div>
@@ -194,19 +194,19 @@ function FileUploader () {
             {/*Liefersystem*/}
             <div className="w-[250px]">
               <label htmlFor="Liefersystem"
-                     className="block mb-2 text-sm font-medium text-black dark:text-white">
+                className="block mb-2 text-sm font-medium text-black dark:text-white">
                 {t('dashboard.fileUploader.DeliverySystem.label')}
               </label>
               <input type="text" id="Liefersystem"
-                     className="bg-gray-50 border border-gray-300 text-gray-900
+                className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
                            dark:focus:border-blue-500"
-                     placeholder={t('dashboard.fileUploader.DeliverySystem.placeholder')}
-                     {...register('Liefersystem', {
-                       required: t('dashboard.fileUploader.DeliverySystem.error')
-                     })} />
+                placeholder={t('dashboard.fileUploader.DeliverySystem.placeholder')}
+                {...register('Liefersystem', {
+                  required: t('dashboard.fileUploader.DeliverySystem.error')
+                })} />
               <div className="text-[red] text-[10px] font-bold mt-1 h-[8px]">
                 {errors.Liefersystem?.message}
               </div>
@@ -256,7 +256,7 @@ function FileUploader () {
                 type="file"
                 name="file"
                 id="file"
-                className="opacity-0 absolute w-full h-full"/>
+                className="opacity-0 absolute w-full h-full" />
               <label
                 htmlFor="file"
                 className="relative border-dashed border
@@ -357,7 +357,7 @@ function FileUploader () {
                         font-medium rounded-lg 
                         border border-black dark:border-white 
                        text-sm px-3 text-center 
-                       ${( selectedFile == null ) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500 hover:border-transparent'}`}
+                       ${(selectedFile == null) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500 hover:border-transparent'}`}
               onClick={saveAsPdf}>Download as json in PDF
             </button>
           </div>
@@ -370,17 +370,22 @@ function FileUploader () {
 
       </div>
 
-      <XmlEditor xmlContent={xmlContent} setXmlContent={setXmlContent}/>
+      <XmlEditor xmlContent={xmlContent} setXmlContent={setXmlContent} />
     </main>
   );
 }
 
 export default FileUploader;
 
-export async function uploadAction ( {request} ) {
+export async function uploadAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
-  const response = await httpService.post('/document', data);
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      access_token: token,
+    }
+  };
+  const response = await httpService.post('/document', data, config);
   return response.status === 200;
 }

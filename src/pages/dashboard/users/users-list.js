@@ -23,27 +23,13 @@ const UserTable = () => {
   }, []);
 
   const getUser = () => {
-    const fakeData = [
-      {
-        'id': 2,
-        'firstName': 'samaneh',
-        'lastName': 'bsm',
-        'username': 'samaneh_bsm',
-        'email': 'samaneh@gmail.com',
-        'password': 'MDNhYzY3NDIxNmYzZTE1Yzc2MWVlMWE1ZTI1NWYwNjc5NTM2MjNjOGIzODhiNDQ1OWUxM2Y5NzhkN2M4NDZmNA==',
-        'isAdmin': false,
-        'f1Access': true,
-        'f2Access': false,
-        'f3Access': false,
-        'f4Access': false,
-        'isActive': false,
-        'activatedAt': null,
-        'createdAt': '2023-10-28T16:55:19.000Z'
-      }
-    ];
-    setUsers(fakeData);
-
-    httpService.get('/users')
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
+    httpService.get('/users' , config)
       .then(response => {
         setUsers(response.data);
       })
