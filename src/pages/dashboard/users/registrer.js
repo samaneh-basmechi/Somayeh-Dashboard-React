@@ -176,7 +176,7 @@ const Register = ( props ) => {
                 {...register('password', {
                   required: t('dashboard.user.register.modal.password.error')
                 })}
-                type="text" id="Password"
+                type="password" id="Password"
                 className={`bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
@@ -197,7 +197,7 @@ const Register = ( props ) => {
                 {...register('confirmPassword', {
                   required: t('dashboard.user.register.modal.confirmPassword.error')
                 })}
-                type="text" id="Confirm-Password"
+                type="password" id="Confirm-Password"
                 className={`bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600

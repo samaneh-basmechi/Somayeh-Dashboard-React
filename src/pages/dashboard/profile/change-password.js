@@ -43,7 +43,7 @@ const ChangePassword = () => {
             {...register('oldPassword', {
               required: t('dashboard.profile.oldPassword.error')
             })}
-            type="text" id="old-password"
+            type="password" id="old-password"
             className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
@@ -63,7 +63,7 @@ const ChangePassword = () => {
             {...register('newPassword', {
               required: t('dashboard.profile.newPassword.error')
             })}
-            type="text" id="new-password"
+            type="password" id="new-password"
             className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
@@ -83,7 +83,7 @@ const ChangePassword = () => {
             {...register('confirmNewPassword', {
               required: t('dashboard.profile.confirmNewPassword.error')
             })}
-            type="text" id="new-password"
+            type="password" id="new-password"
             className="bg-gray-50 border border-gray-300 text-gray-900
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600

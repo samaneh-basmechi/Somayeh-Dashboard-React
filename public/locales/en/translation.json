@@ -71,7 +71,7 @@
         "placeholder": "Delivery system"
       },
       "client": {
-        "label": "client",
+        "label": "Client",
         "error": "Please select client.",
         "defaultOption": "select client",
         "options": {
@@ -82,7 +82,9 @@
       "payload": {
         "title": "Upload File",
         "drop": "Drop files here",
-        "browse": "Browse"
+        "or": "or",
+        "browse": "Browse",
+        "error": "Please upload xml file."
       },
       "PayloadType": {
         "label": "Payload Type",
@@ -120,7 +122,9 @@
         "label": "Description",
         "error": "Please enter Description.",
         "placeholder": "SUID"
-      }
+      },
+      "submit": "Upload",
+      "xmlShowerTitle": "Content of your uploaded XML file"
     },
     "user": {
       "table": {

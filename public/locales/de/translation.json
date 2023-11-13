@@ -83,7 +83,9 @@
       "payload": {
         "title": "Datei hochladen",
         "drop": "Dateien hier ablegen",
-        "browse": "Durchsuche"
+        "or": "oder",
+        "browse": "Durchsuche",
+        "error": "Bitte laden Sie eine XML-Datei hoch."
       },
       "PayloadType": {
         "label": "Nutzlasttyp",
@@ -95,7 +97,7 @@
         }
       },
       "PayloadMIMEType": {
-        "label": " Payload MIME Type",
+        "label": "Nutzlast MIME Typ",
         "error": "Bitte wählen Sie den Payload MIME Type aus.",
         "defaultOption": "Wählen Sie den MIME-Typ der Nutzlast aus",
         "options": {
@@ -121,7 +123,9 @@
         "label": "Description",
         "error": "Bitte geben Sie die Description.",
         "placeholder": "Description"
-      }
+      },
+      "submit": "Hochladen",
+      "xmlShowerTitle": "Inhalt Ihrer hochgeladenen XML-Datei"
     },
     "user": {
       "table": {
