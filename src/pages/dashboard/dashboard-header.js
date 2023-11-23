@@ -32,7 +32,7 @@ function DashboardHeader(params) {
                 <Link
                     to="profile" className="relative inline-flex items-center
           p-2 hover:bg-gray-400 rounded-lg mr-2">
-                    <div className="hidden flex flex-col items-end leading-tight">
+                    <div className="flex flex-col items-end leading-tight">
                         <span className="font-semibold text-black dark:text-white">{userInfo?.email}</span>
                         <span className="text-sm text-black dark:text-gray-300">{userInfo?.username}</span>
                     </div>

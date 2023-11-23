@@ -67,7 +67,7 @@ function FileUploaderInt () {
 
   return (
       <div className="bg-white dark:bg-black p-6 ">
-        <h3 className="block font-bold w-full text-gray dark:text-white mb-3">File Uploader Dev Batch</h3>
+        <h3 className="block font-bold w-full text-gray dark:text-white mb-3">File Uploader Int</h3>
 
         <main  className="h-[calc(100vh_-_100px)] bg-white dark:bg-black overflow-auto flex gap-4 overflow-auto">
           <div className=" bg-white border-[black] border border-solid dark:bg-gray-800 p-4 rounded shadow-lg border-right w-[300px] overflow-auto flex-grow">
