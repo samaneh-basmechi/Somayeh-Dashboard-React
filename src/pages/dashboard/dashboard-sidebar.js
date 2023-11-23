@@ -1,137 +1,179 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-import Func from '../../assets/images/func.svg';
-import Logout from '../../assets/images/logout.svg';
-import User from '../../assets/images/user.svg';
-import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
+import {NavLink} from 'react-router-dom';
 
-function DashboardSidebar ( params ) {
-  const {t} = useTranslation();
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
-  };
-  return (
-    <aside
-      className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
+function MenuItem({menuItem, menu}) {
+    const {t} = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSubMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <li>
+            {menuItem.to &&
+                <NavLink to={menuItem.to}
+                         className={`w-full text-black inline-flex items-center py-3
+                                 hover:bg-gray-500 focus:bg-gray-400 dark:text-white
+                                 rounded-lg px-2 ${menu ? 'justify-start' : 'justify-center'}`}>
+
+                    <svg className="stroke-black dark:stroke-white w-6 h-6" aria-hidden="true"
+                         viewBox="0 0 24 24" width="512" height="512">
+                        <g id="_01_align_center" data-name="01 align center">
+                            <path
+                                d="M12,19a7,7,0,1,1,7-7A7.008,7.008,0,0,1,12,19ZM12,7a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12,7Z"/>
+                        </g>
+                    </svg>
+
+                    {menu && <span
+                        className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
+
+                    {
+                        (menu && menuItem.subItems.length > 0) &&
+                        <svg className="stroke-black dark:stroke-white w-4 h-4 ml-auto" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 10">
+                            <path stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"></path>
+                        </svg>
+                    }
+
+                </NavLink>
+            }
+            {!menuItem.to &&
+                <button onClick={toggleSubMenu}
+                        className={`w-full text-black inline-flex items-center py-3
+                                 hover:bg-gray-500 focus:bg-gray-400 dark:text-white
+                                 rounded-lg px-2 ${menu ? 'justify-start' : 'justify-center'}`}>
+
+                    <svg className="stroke-black dark:stroke-white w-6 h-6" aria-hidden="true"
+                         viewBox="0 0 24 24" width="512" height="512">
+                        <g id="_01_align_center" data-name="01 align center">
+                            <path
+                                d="M12,19a7,7,0,1,1,7-7A7.008,7.008,0,0,1,12,19ZM12,7a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12,7Z"/>
+                        </g>
+                    </svg>
+
+                    {menu && <span
+                        className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
+
+                    {
+                        (menu && menuItem.subItems.length > 0) &&
+                        <svg className="stroke-black dark:stroke-white w-4 h-4 ml-auto" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 10">
+                            <path stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"></path>
+                        </svg>
+                    }
+                </button>
+            }
+
+            {isOpen && menuItem.subItems && (
+                <ul className="flex flex-col mx-4 my-6 space-y-4">
+                    {menuItem.subItems.map((subItem, index) => (
+                        <MenuItem key={index} menuItem={subItem} menu={menu}/>
+                    ))}
+                </ul>
+            )}
+        </li>
+    );
+}
+
+
+function DashboardSidebar(params) {
+    const {t} = useTranslation();
+    const navigate = useNavigate();
+    const [permissions, setPermissions] = useState([]);
+
+    useEffect(() => {
+        getPermissions();
+    }, []);
+    const logout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
+
+    const getPermissions = (() => {
+        setPermissions(JSON.parse(localStorage.getItem('permissions')));
+    });
+
+    const menuItems = [
+        {
+            title: 'Users',
+            subItems: [],
+            permission: "isAdmin",
+            to: "users",
+        },
+        {
+            title: 'Dev',
+            permission: "f1Access",
+            subItems: [
+                {title: 'Online', subItems: [], to: "dev/online"},
+                {title: 'Batch', subItems: [], to: "dev/batch"},
+            ],
+        },
+        {
+            title: 'Int',
+            subItems: [],
+            permission: "f2Access",
+            to: "int",
+        },
+        // {title: 'Prod', subItems: [] ,permission: "f3Access", to: "prod",},
+    ];
+
+    return (
+        <aside
+            className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
       <span
-        className="inline-flex items-center justify-center h-20 w-full bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
-        {params.menu && <span className="text-black dark:text-gray-300 text-xl">
+          className="inline-flex items-center justify-center h-20
+          w-full bg-white border-r-[black] border-r border-solid dark:bg-gray-800 ">
+        {params.menu &&
+            <span className="text-black dark:text-gray-300 text-xl">
           {t('dashboard.sidebar.title')}
-        </span>}
+        </span>
+        }
       </span>
 
-      <div
-        className="flex-grow flex flex-col justify-between text-gray-500 bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
-        <nav className="flex flex-col mx-4 my-6 space-y-4">
-          <NavLink
-            to="users"
-            
-            className={` text-black inline-flex items-center py-3 
-            hover:bg-gray-500 focus:bg-gray-400 dark:text-white
-             rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}>
-            <svg className="stroke-black dark:stroke-white w-4 h-4" aria-hidden="true"
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-              <path strokeLinejoin="round" strokeWidth="2"
-                    d="M4 4H1m3 4H1m3 4H1m3 4H1m6.071.286a3.429 3.429 0 1 1 6.858 0M4 1h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/>
-            </svg>
-            {params.menu && <span className="ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.link.users')}
-            </span>}
-          </NavLink>
+            <div
+                className="flex-grow flex flex-col justify-between text-gray-500 bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
+                <ul className="flex flex-col mx-4 my-6 space-y-4">
+                    {menuItems.map((menuItem, index) => (
+                        permissions[menuItem.permission] &&
+                        <MenuItem key={index}
+                                  menuItem={menuItem}
+                                  menu={params.menu}/>
+                    ))}
 
-          <NavLink
-            to="func-one"
-            className={` inline-flex items-center py-3 text-black
-            hover:bg-gray-500 focus:bg-gray-400 dark:text-white
-             rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}>
-            <svg className="fill-black dark:fill-white w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 18 18">
-              <path
-                d="M17 0h-5.768a1 1 0 1 0 0 2h3.354L8.4 8.182A1.003 1.003 0 1 0 9.818 9.6L16 3.414v3.354a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Z"/>
-              <path
-                d="m14.258 7.985-3.025 3.025A3 3 0 1 1 6.99 6.768l3.026-3.026A3.01 3.01 0 0 1 8.411 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V9.589a3.011 3.011 0 0 1-1.742-1.604Z"/>
-            </svg>
-            {params.menu && <span className="ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.link.funcOne')}
-            </span>}
-          </NavLink>
+                </ul>
 
-          <NavLink
-            to="func-two"
-            className={`inline-flex items-center py-3 text-black 
-            dark:text-white hover:bg-gray-500 focus:bg-gray-400
-            rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}>
-            <svg className="fill-black dark:fill-white w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 18 18">
-              <path
-                d="M17 0h-5.768a1 1 0 1 0 0 2h3.354L8.4 8.182A1.003 1.003 0 1 0 9.818 9.6L16 3.414v3.354a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Z"/>
-              <path
-                d="m14.258 7.985-3.025 3.025A3 3 0 1 1 6.99 6.768l3.026-3.026A3.01 3.01 0 0 1 8.411 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V9.589a3.011 3.011 0 0 1-1.742-1.604Z"/>
-            </svg>
-            {params.menu && <span className="ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.link.funcTwo')}
-            </span>}
-          </NavLink>
-
-          <NavLink
-            to="func-three"
-            className={`inline-flex items-center py-3 text-black 
-            dark:text-white hover:bg-gray-500 focus:bg-gray-400
-            rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}
-            activeclassname="bg-white">
-            <svg className="fill-black dark:fill-white w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 18 18">
-              <path
-                d="M17 0h-5.768a1 1 0 1 0 0 2h3.354L8.4 8.182A1.003 1.003 0 1 0 9.818 9.6L16 3.414v3.354a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Z"/>
-              <path
-                d="m14.258 7.985-3.025 3.025A3 3 0 1 1 6.99 6.768l3.026-3.026A3.01 3.01 0 0 1 8.411 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V9.589a3.011 3.011 0 0 1-1.742-1.604Z"/>
-            </svg>
-            {params.menu && <span className="ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.link.funcTwo')}
-            </span>}
-          </NavLink>
-
-          <NavLink
-            to="func-four"
-            className={`inline-flex items-center py-3 text-black 
-            dark:text-white hover:bg-gray-500 focus:bg-gray-400
-            rounded-lg px-2 ${params.menu ? 'justify-start' : 'justify-center'}`}
-            activeclassname="bg-white">
-            <svg className="fill-black dark:fill-white w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 18 18">
-              <path
-                d="M17 0h-5.768a1 1 0 1 0 0 2h3.354L8.4 8.182A1.003 1.003 0 1 0 9.818 9.6L16 3.414v3.354a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Z"/>
-              <path
-                d="m14.258 7.985-3.025 3.025A3 3 0 1 1 6.99 6.768l3.026-3.026A3.01 3.01 0 0 1 8.411 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V9.589a3.011 3.011 0 0 1-1.742-1.604Z"/>
-            </svg>
-            {params.menu && <span className="ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.link.funcTwo')}
-            </span>}
-          </NavLink>
-        </nav>
-
-        <button
-          onClick={logout}
-          className="border-t-gray-600 border-t border-solid
-          hover:bg-gray-500 px-2 w-full flex items-center py-2 px-4">
-          <svg className="h-6 w-6 stroke-black dark:stroke-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-               fill="none" viewBox="0 0 18 16">
-            <path strokeLinejoin="round" strokeWidth="2"
-                  d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-          </svg>
-          {params.menu &&
-            <span className="text-black dark:text-white menu-item-text
-           ml-2 load-animation-nav-item">
-              {t('dashboard.sidebar.logout')}
-            </span>}
-        </button>
-      </div>
-    </aside>
-  );
+                <button
+                    onClick={logout}
+                    className="border-t-gray-600 border-t border-solid
+                               hover:bg-gray-500 px-2 w-full flex items-center py-2 px-4">
+                    <svg className="h-6 w-6 stroke-black dark:stroke-white" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg"
+                         fill="none" viewBox="0 0 18 16">
+                        <path strokeLinejoin="round" strokeWidth="2"
+                              d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+                    </svg>
+                    {params.menu &&
+                        <span className="text-black dark:text-white menu-item-text
+                                          ml-2 load-animation-nav-item">
+                          {t('dashboard.sidebar.logout')}
+                        </span>}
+                </button>
+            </div>
+        </aside>
+    );
 }
 
 export default DashboardSidebar;
+

@@ -29,7 +29,6 @@ function UpdatePermissions ( props ) {
     };
     httpService.patch(`/users/${props.userData.id}/permissions`, payload, config)
       .then(response => {
-          console.log(response.data);
           props.getUser();
           props.closeUpdatePermission();
         }

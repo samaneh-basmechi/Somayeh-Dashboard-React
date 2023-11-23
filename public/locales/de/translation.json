@@ -20,11 +20,12 @@
     "sidebar": {
       "title": "Armaturenbrett",
       "link": {
-        "users": "Benutzer",
-        "funcOne": "Funktion-Eins",
-        "funcTwo": "Funktion-Zwei",
-        "funcThree": "Funktion-drei",
-        "funcFour": "Funktion-vier"
+        "Users": "Users",
+        "Dev": "Dev",
+        "Online": "Online",
+        "Batch": "Batch",
+        "Int": "Int",
+        "Prod": "Prod"
       },
       "logout": "Ausloggen"
     },
@@ -130,6 +131,7 @@
     "user": {
       "table": {
         "name": "Name",
+        "userName": "Nutzername",
         "email": "Email",
         "permissions": "Berechtigungen",
         "resetPassword": "resetPassword"

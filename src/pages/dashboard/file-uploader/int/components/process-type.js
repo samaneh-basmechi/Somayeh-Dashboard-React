@@ -25,12 +25,6 @@ const ProcessType = (props) => {
         <option value="" disabled>
           {t('dashboard.fileUploader.ProcessType.defaultOption')}
         </option>
-        <option value="Online">
-          {t('dashboard.fileUploader.ProcessType.options.Online')}
-        </option>
-        <option value="Batch">
-          {t('dashboard.fileUploader.ProcessType.options.Batch')}
-        </option>
         <option value="SerialLetter">
           {t('dashboard.fileUploader.ProcessType.options.SerialLetter')}
         </option>

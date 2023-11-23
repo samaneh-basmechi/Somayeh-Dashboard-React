@@ -20,11 +20,12 @@
     "sidebar": {
       "title": "Dashboard",
       "link": {
-        "users": "Users",
-        "funcOne": "Func-one",
-        "funcTwo": "Func-two",
-        "funcThree": "Func-three",
-        "funcFour": "Func-four"
+        "Users": "Users",
+        "Dev": "Dev",
+        "Online": "Online",
+        "Batch": "Batch",
+        "Int": "Int",
+        "Prod": "Prod"
       },
       "logout": "logout"
     },
@@ -129,6 +130,7 @@
     "user": {
       "table": {
         "name": "Name",
+        "userName": "UserName",
         "email": "Email",
         "permissions": "Permissions",
         "resetPassword": "Reset Password"

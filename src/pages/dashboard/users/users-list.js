@@ -11,7 +11,7 @@ const UserTable = () => {
   const [userSelected, setUserSelected] = useState([]);
 
   const [openUpdatePermissionModal, setOpenUpdatePermissionModal] = useState(false);
-  const openUpdatePermission = ( item ) => {setOpenUpdatePermissionModal(true);};
+  const openUpdatePermission = ( ) => {setOpenUpdatePermissionModal(true);};
   const closeUpdatePermission = () => {setOpenUpdatePermissionModal(false);};
 
   const [openResetPasswordModal, setOpenResetPasswordModal] = useState(false);
@@ -60,6 +60,11 @@ const UserTable = () => {
                     <th className="px-5 py-3 border-b-2 border-gray-200
                       bg-gray-100 dark:border-gray-700 dark:bg-gray-700 dark:text-white text-left text-xs font-semibold text-gray-700
                       uppercase tracking-wider">
+                      {t('dashboard.user.table.userName')}
+                    </th>
+                    <th className="px-5 py-3 border-b-2 border-gray-200
+                      bg-gray-100 dark:border-gray-700 dark:bg-gray-700 dark:text-white text-left text-xs font-semibold text-gray-700
+                      uppercase tracking-wider">
                       {t('dashboard.user.table.email')}
                     </th>
                     <th className="text-center px-5 py-3 border-b-2
@@ -83,6 +88,9 @@ const UserTable = () => {
                       </td>
                       <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         {item.firstName + ' ' + item.lastName}
+                      </td>
+                      <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
+                        {item.username}
                       </td>
                       <td className="font-bold px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
                         {item.email}
@@ -133,6 +141,7 @@ const UserTable = () => {
         closeUpdatePermission={closeUpdatePermission}/>
       <ResetPassword
         userData={userSelected}
+        getUser={getUser}
         openResetPasswordModal={openResetPasswordModal}
         closeResetPassword={closeResetPassword}/>
     </main>

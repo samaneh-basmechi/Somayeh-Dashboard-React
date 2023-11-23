@@ -42,7 +42,7 @@ const UserInformation = () => {
           {t('dashboard.profile.access.f1')}
           </span> )}
 
-        {userInfo.f2Access && (
+        {userInfo?.f2Access && (
           <span className="inline-flex items-center
                         rounded-md bg-green-50 px-2 py-1 text-xs 
                         text-green-700 ring-1 ring-inset 
@@ -50,7 +50,7 @@ const UserInformation = () => {
                       {t('dashboard.profile.access.f2')}
           </span> )}
 
-        {userInfo.f3Access && (
+        {userInfo?.f3Access && (
           <span className="inline-flex items-center
                         rounded-md bg-green-50 px-2 py-1 text-xs 
                         text-green-700 ring-1 ring-inset 
@@ -58,7 +58,7 @@ const UserInformation = () => {
                       {t('dashboard.profile.access.f3')}
           </span> )}
 
-        {userInfo.f4Access && (
+        {userInfo?.f4Access && (
           <span className="inline-flex items-center
                         rounded-md bg-green-50 px-2 py-1 text-xs 
                         text-green-700 ring-1 ring-inset 

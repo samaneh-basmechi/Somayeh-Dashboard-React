@@ -9,9 +9,9 @@ export default function LandingPage () {
   return (
     <div className="relative flex items-center h-full p-20">
 
-      <div className="w-2/5 p-2">
+      <div className="w-2/5 p-2 flex flex-col items-start gap-4">
 
-        <p className="font-semibold text-3xl mb-5 dark:text-white">
+        <p className="font-semibold text-3xl dark:text-white">
           {t('home.title')}
         </p>
 
@@ -21,7 +21,7 @@ export default function LandingPage () {
 
         <Link to="/login"
               type="button"
-              className="mt-8 text-white bg-black hover:bg-gradient-to-r
+              className="text-white bg-black hover:bg-gradient-to-r
           from-indigo-500 via-purple-500 to-pink-500 rounded-md
           text-xl px-14 py-4 text-center dark:bg-gray-700 dark:border-gray-700">
           {t('home.button')}

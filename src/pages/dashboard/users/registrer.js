@@ -38,10 +38,9 @@ const Register = ( props ) => {
   };
 
   const [items, setItems] = useState([
-    {name: 'f1Access', text: 'Function one', checked: false},
-    {name: 'f2Access', text: 'Function two', checked: false},
-    {name: 'f3Access', text: 'Function three', checked: false},
-    {name: 'f4Access', text: 'Function four', checked: false},
+    {name: 'f1Access', text: 'Dev', checked: false},
+    {name: 'f2Access', text: 'Int', checked: false},
+    // {name: 'f3Access', text: 'Prod', checked: false},
   ]);
 
   const handleCheckboxChange = ( itemName ) => {

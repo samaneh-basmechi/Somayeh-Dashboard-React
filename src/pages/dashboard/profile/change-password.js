@@ -9,7 +9,6 @@ const ChangePassword = () => {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const onSubmit = ( data ) => {
     delete data[ 'confirmPassword' ];
-    console.log(data);
     const token = localStorage.getItem('token');
     const config = {
       headers: {

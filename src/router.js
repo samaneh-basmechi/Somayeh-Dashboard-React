@@ -1,11 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Login, { loginAction } from './pages/authentication/login';
+import Login from './pages/authentication/login';
 import LandingPage from './pages/landing/landing-page';
 import LandingLayout from './pages/landing/landing-layout';
 import DashboardLayout from './pages/dashboard/dashboard-layout';
-import FileUploader, { uploadAction } from './pages/dashboard/file-uploader/file-uploader';
+import FileUploaderInt, { uploadAction } from './pages/dashboard/file-uploader/int/file-uploader-int';
 import Profile from './pages/dashboard/profile/profile';
 import UserList from './pages/dashboard/users/users-list';
+import FileUploaderDevOnline from "./pages/dashboard/file-uploader/dev-online/file-uploader-dev-online";
+import FileUploaderDevBatch from "./pages/dashboard/file-uploader/dev-batch/file-uploader-dev-batch";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +16,6 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login/>,
-        action: loginAction,
         errorElement: <Login/>
       },
       {
@@ -34,29 +35,29 @@ const router = createBrowserRouter([
         index: true
       },
       {
-        path: 'func-one',
-        element: <FileUploader/>,
+        path: 'dev/online',
+        element: <FileUploaderDevOnline/>,
         action: uploadAction,
-        errorElement: <FileUploader/>
+        errorElement: <FileUploaderDevOnline/>
       },
       {
-        path: 'func-two',
-        element: <FileUploader/>,
+        path: 'dev/batch',
+        element: <FileUploaderDevBatch/>,
         action: uploadAction,
-        errorElement: <FileUploader/>
+        errorElement: <FileUploaderDevBatch/>
       },
       {
-        path: 'func-three',
-        element: <FileUploader/>,
+        path: 'int',
+        element: <FileUploaderInt/>,
         action: uploadAction,
-        errorElement: <FileUploader/>
+        errorElement: <FileUploaderInt/>
       },
-      {
-        path: 'func-four',
-        element: <FileUploader/>,
-        action: uploadAction,
-        errorElement: <FileUploader/>
-      },
+      // {
+      //   path: 'prod',
+      //   element: <FileUploaderInt/>,
+      //   action: uploadAction,
+      //   errorElement: <FileUploaderInt/>
+      // },
       {
         path: 'users',
         element: <UserList/>,
