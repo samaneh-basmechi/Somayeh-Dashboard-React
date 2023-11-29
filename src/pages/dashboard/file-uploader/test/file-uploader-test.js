@@ -15,7 +15,7 @@ import Payload from './components/payload';
 import PayloadType from './components/payload-type';
 import PayloadMIMEType from './components/payload-MIME-type';
 
-function FileUploaderInt () {
+function FileUploaderTest () {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [xmlContent, setXmlContent] = useState('');
   const {t} = useTranslation();
@@ -73,7 +73,7 @@ function FileUploaderInt () {
 
   return (
       <div className="bg-white dark:bg-black p-6 ">
-        <h3 className="block font-bold w-full text-gray dark:text-white mb-3">File Uploader Int</h3>
+        <h3 className="block font-bold w-full text-gray dark:text-white mb-3">File Uploader Test</h3>
 
         <main  className="h-[calc(100vh_-_100px)] bg-white dark:bg-black overflow-auto flex gap-4 overflow-auto">
           <div className=" bg-white border-[black] border border-solid dark:bg-gray-800 p-4 rounded shadow-lg border-right w-[300px] overflow-auto flex-grow">
@@ -143,7 +143,7 @@ function FileUploaderInt () {
   );
 }
 
-export default FileUploaderInt;
+export default FileUploaderTest;
 
 export async function uploadAction ( {request} ) {
   const formData = await request.formData();

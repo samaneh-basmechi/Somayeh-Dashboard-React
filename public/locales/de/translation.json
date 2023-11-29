@@ -25,6 +25,7 @@
         "Online": "Online",
         "Batch": "Batch",
         "Int": "Int",
+        "Test": "Test",
         "Prod": "Prod"
       },
       "logout": "Ausloggen"
@@ -82,25 +83,25 @@
         }
       },
       "payload": {
-        "title": "Datei hochladen",
+        "title": "Payload",
         "drop": "Dateien hier ablegen",
         "or": "oder",
         "browse": "Durchsuche",
         "error": "Bitte laden Sie eine XML-Datei hoch."
       },
       "PayloadType": {
-        "label": "Nutzlasttyp",
-        "error": "Bitte Nutzlasttyp auswählen.",
-        "defaultOption": "Wählen Sie Nutzlasttyp",
+        "label": "PayloadType",
+        "error": "Bitte PayloadType auswählen.",
+        "defaultOption": "Wählen Sie PayloadType",
         "options": {
           "Inline": "Inline",
           "Url": "Url"
         }
       },
       "PayloadMIMEType": {
-        "label": "Nutzlast MIME Typ",
+        "label": "PayloadMIMEType",
         "error": "Bitte wählen Sie den Payload MIME Type aus.",
-        "defaultOption": "Wählen Sie den MIME-Typ der Nutzlast aus",
+        "defaultOption": "Wählen Sie den der PayloadMIMEType aus",
         "options": {
           "text": "text/xml"
         }

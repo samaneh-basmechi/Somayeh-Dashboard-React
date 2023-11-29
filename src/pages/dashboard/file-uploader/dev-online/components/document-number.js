@@ -8,7 +8,7 @@ const DocumentNumber = (props) => {
     <div className="w-[250px]">
       <label htmlFor="Dokumentenanzahl"
              className="block mb-2 text-sm font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.NumberOfDocuments.label')}
+          Dokumentenanzahl
       </label>
       <input type="number" id="Dokumentenanzahl"
              defaultValue="1"

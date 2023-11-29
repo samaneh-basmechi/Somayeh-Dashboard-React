@@ -8,13 +8,13 @@ const DeliverySystem = (props) => {
     <div className="w-[250px]">
       <label htmlFor="Liefersystem"
              className="block mb-2 text-sm font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.DeliverySystem.label')}
+          Liefersystem
       </label>
       <input
           readOnly
           value="Test"
           type="text" id="Liefersystem"
-             className="bg-gray-50 border border-gray-300 text-gray-900
+             className="bg-gray-50 border border-gray-300 text-gray-900 cursor-not-allowed
                           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
                           block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                           dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500

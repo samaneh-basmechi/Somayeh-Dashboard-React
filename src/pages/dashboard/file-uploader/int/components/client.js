@@ -7,7 +7,7 @@ const Client = (props) => {
   return (
     <div className="w-[250px]">
       <label htmlFor="Mandant" className="block mb-2 text-sm font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.client.label')}
+          Mandant
       </label>
       <select
         id="Mandant"

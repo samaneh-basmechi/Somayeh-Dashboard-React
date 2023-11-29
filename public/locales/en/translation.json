@@ -25,15 +25,16 @@
         "Online": "Online",
         "Batch": "Batch",
         "Int": "Int",
+        "Test": "Test",
         "Prod": "Prod"
       },
       "logout": "logout"
     },
     "fileUploader": {
       "ProcessType": {
-        "label": "Process type",
-        "error": "Please select process type.",
-        "defaultOption": "Select Process type",
+        "label": "Dokumentenanzahl",
+        "error": "Please select Dokumentenanzahl.",
+        "defaultOption": "Select Dokumentenanzahl",
         "options": {
           "Online": "Online",
           "Batch": "Batch",
@@ -41,9 +42,9 @@
         }
       },
       "DocumentType": {
-        "label": "Document Type",
-        "error": "Please select Document Type.",
-        "defaultOption": "Select Document Type",
+        "label": "Dokumentenart",
+        "error": "Please select Dokumentenart.",
+        "defaultOption": "Select Dokumentenart",
         "options": {
           "OM0001": "OM0001",
           "OM0002": "OM0002",
@@ -54,27 +55,27 @@
         }
       },
       "NumberOfDocuments": {
-        "label": "Number of documents",
-        "error": "Please enter number of documents.",
-        "placeholder": "Number of documents"
+        "label": "Dokumentenanzahl",
+        "error": "Please enter Dokumentenanzahl.",
+        "placeholder": "Dokumentenanzahl"
       },
       "Vicinity": {
-        "label": "Vicinity",
-        "error": "Please select Vicinity.",
-        "defaultOption": " Select Vicinity",
+        "label": "Umgebung",
+        "error": "Please select Umgebung.",
+        "defaultOption": " Select Umgebung",
         "options": {
           "Dev": "Dev"
         }
       },
       "DeliverySystem": {
-        "label": "Delivery system",
-        "error": "Please enter Delivery system.",
-        "placeholder": "Delivery system"
+        "label": "Liefersystem",
+        "error": "Please enter Liefersystem.",
+        "placeholder": "Liefersystem"
       },
       "client": {
-        "label": "Client",
-        "error": "Please select client.",
-        "defaultOption": "select client",
+        "label": "Mandant",
+        "error": "Please select Mandant.",
+        "defaultOption": "select Mandant",
         "options": {
           "DFDB": "DFDB",
           "DKBU": "DKBU"
@@ -97,7 +98,7 @@
         }
       },
       "PayloadMIMEType": {
-        "label": " Payload MIME Type",
+        "label": "Payload MIME Type",
         "error": "Please select Payload MIME Type.",
         "defaultOption": "select Payload MIME Type",
         "options": {

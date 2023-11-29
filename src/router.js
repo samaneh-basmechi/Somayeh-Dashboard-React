@@ -8,6 +8,7 @@ import Profile from './pages/dashboard/profile/profile';
 import UserList from './pages/dashboard/users/users-list';
 import FileUploaderDevOnline from "./pages/dashboard/file-uploader/dev-online/file-uploader-dev-online";
 import FileUploaderDevBatch from "./pages/dashboard/file-uploader/dev-batch/file-uploader-dev-batch";
+import FileUploaderTest from "./pages/dashboard/file-uploader/test/file-uploader-test";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,12 @@ const router = createBrowserRouter([
         element: <FileUploaderInt/>,
         action: uploadAction,
         errorElement: <FileUploaderInt/>
+      },
+      {
+        path: 'test',
+        element: <FileUploaderTest/>,
+        action: uploadAction,
+        errorElement: <FileUploaderTest/>
       },
       // {
       //   path: 'prod',

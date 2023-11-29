@@ -7,7 +7,7 @@ const PayloadType = (props) => {
   return (
     <div className="w-[250px]">
       <label htmlFor="payload-type" className="block mb-2 text-sm font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.PayloadType.label')}
+          PayloadType
       </label>
       <select
         id="payload-type"

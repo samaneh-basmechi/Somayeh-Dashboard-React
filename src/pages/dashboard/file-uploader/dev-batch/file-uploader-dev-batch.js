@@ -26,9 +26,10 @@ function FileUploaderDevBatch() {
         if (!selectedFiles.length) {
             return;
         }
-        const form = Object.assign(data, {Payload: btoa(xmlContent), XMLFilename: 'batchfiles.xml'});
-        console.log(form)
-        submitForm(form, {method: 'post'});
+        for (const file of selectedFiles) {
+            const form = Object.assign(data, {Payload: btoa(file.content), XMLFilename: file.name});
+            submitForm(form, {method: 'post'});
+        }
     };
 
     useEffect(() => {
@@ -46,45 +47,50 @@ function FileUploaderDevBatch() {
         setSelectedFiles([]);
         setXmlContent('');
         const files = Array.from(event.target.files);
+        const updatedFiles = [];
 
-        const updatedFiles = files.map((file) => {
+        files.forEach((file) => {
             const reader = new FileReader();
             reader.onload = (event) => {
                 const xmlContent = event.target.result;
                 const formattedXml = vkbeautify.xml(xmlContent);
                 setXmlContent((prevXmlContent) => prevXmlContent + '\n' + formattedXml);
+
+                // Add the file to updatedFiles with the content
+                updatedFiles.push({
+                    name: file.name,
+                    content: xmlContent,
+                });
+
+                // Check if all files have been processed
+                if (updatedFiles.length === files.length) {
+                    setSelectedFiles(updatedFiles);
+                }
             };
             reader.readAsText(file);
-
-            return {
-                name: file.name,
-                content: reader.result,
-            };
         });
-
-        setSelectedFiles(updatedFiles);
     };
 
     return (
         <div className="bg-white dark:bg-black p-6 ">
             <h3 className="block font-bold w-full text-gray dark:text-white mb-3">File Uploader Dev Batch</h3>
 
-            <main  className="h-[calc(100vh_-_100px)] bg-white dark:bg-black overflow-auto flex gap-4 overflow-auto">
-                <div className=" bg-white border-[black] border border-solid dark:bg-gray-800 p-4 rounded shadow-lg border-right w-[300px] overflow-auto flex-grow">
+            <main className="h-[calc(100vh_-_100px)] bg-white dark:bg-black overflow-auto flex gap-4 overflow-auto">
+                <div
+                    className=" bg-white border-[black] border border-solid dark:bg-gray-800 p-4 rounded shadow-lg border-right w-[300px] overflow-auto flex-grow">
 
                     <Form onSubmit={handleSubmit(onSubmit)} className="flex flex-col h-[100%] justify-between">
 
                         <div className="flex gap-3">
                             {/*Vearbeitungstype*/}
                             <ProcessType register={register} errors={errors}/>
-                            {/*Document Type*/}
+                            {/*Dokumentenart*/}
                             <DocumentType register={register} errors={errors}/>
                         </div>
 
                         <div className="flex gap-3">
                             {/*Dokumentenanzahl*/}
                             <DocumentNumber register={register} errors={errors}/>
-
                             {/*Umgebung*/}
                             <Vicinity register={register} errors={errors}/>
                         </div>
@@ -92,7 +98,6 @@ function FileUploaderDevBatch() {
                         <div className="flex gap-3">
                             {/*Liefersystem*/}
                             <DeliverySystem register={register} errors={errors}/>
-
                             {/*Mandant*/}
                             <Client register={register} errors={errors}/>
                         </div>
@@ -101,9 +106,8 @@ function FileUploaderDevBatch() {
                         <Payload handleFileChange={handleFileChange}/>
 
                         <div className="flex gap-3">
-                            {/*Payload type*/}
+                            {/*PayloadType*/}
                             <PayloadType register={register} errors={errors}/>
-
                             {/*Payload MIME Type*/}
                             <PayloadMIMEType register={register} errors={errors}/>
                         </div>
@@ -112,12 +116,12 @@ function FileUploaderDevBatch() {
                             <button
                                 type="submit"
                                 className="block
-              bg-gray-700 dark:bg-black
-              text-white py-3 px-3
-              rounded-md hover:bg-gradient-to-r
-              from-indigo-500 via-purple-500
-              to-pink-500 border border-white
-              text-center">
+                                  bg-gray-700 dark:bg-black
+                                  text-white py-3 px-3
+                                  rounded-md hover:bg-gradient-to-r
+                                  from-indigo-500 via-purple-500
+                                  to-pink-500 border border-white
+                                  text-center">
                                 {t('dashboard.fileUploader.submit')}
                             </button>
                         </div>

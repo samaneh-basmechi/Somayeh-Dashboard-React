@@ -8,7 +8,7 @@ const DocumentType = (props) => {
     <div className="w-[250px]">
       <label htmlFor="document-type" className="block mb-2 text-sm
               font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.DocumentType.label')}
+          Dokumentenart
       </label>
       <select
         id="document-type"

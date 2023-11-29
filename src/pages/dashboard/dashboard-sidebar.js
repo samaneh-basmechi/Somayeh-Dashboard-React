@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 
 import {useTranslation} from 'react-i18next';
 import {NavLink} from 'react-router-dom';
+import userIcon from '../../assets/images/user.svg';
+import funcIcon from '../../assets/images/func.svg';
 
 function MenuItem({menuItem, menu}) {
     const {t} = useTranslation();
@@ -20,13 +22,14 @@ function MenuItem({menuItem, menu}) {
                                  hover:bg-gray-500 focus:bg-gray-400 dark:text-white
                                  rounded-lg px-2 ${menu ? 'justify-start' : 'justify-center'}`}>
 
-                    <svg className="stroke-black dark:stroke-white w-6 h-6" aria-hidden="true"
-                         viewBox="0 0 24 24" width="512" height="512">
-                        <g id="_01_align_center" data-name="01 align center">
-                            <path
-                                d="M12,19a7,7,0,1,1,7-7A7.008,7.008,0,0,1,12,19ZM12,7a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12,7Z"/>
-                        </g>
-                    </svg>
+
+                    {menuItem.icon && (
+                        <img
+                            className="stroke-black dark:stroke-white w-4 h-4 brightness-0 saturate-[100%] invert-[0%] sepia-[0%] saturate-[7500%] hue-rotate-[160deg] brightness-[99%] contrast-[105%] dark:brightness-0 saturate-[100%] invert sepia saturate-[1%] hue-rotate-[48deg] brightness-[104%] contrast-[101%]"
+                            src={menuItem.icon}
+                            alt="menu-icon"
+                        />
+                    )}
 
                     {menu && <span
                         className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
@@ -51,21 +54,21 @@ function MenuItem({menuItem, menu}) {
                                  hover:bg-gray-500 focus:bg-gray-400 dark:text-white
                                  rounded-lg px-2 ${menu ? 'justify-start' : 'justify-center'}`}>
 
-                    <svg className="stroke-black dark:stroke-white w-6 h-6" aria-hidden="true"
-                         viewBox="0 0 24 24" width="512" height="512">
-                        <g id="_01_align_center" data-name="01 align center">
-                            <path
-                                d="M12,19a7,7,0,1,1,7-7A7.008,7.008,0,0,1,12,19ZM12,7a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12,7Z"/>
-                        </g>
-                    </svg>
+                    {menuItem.icon && (
+                        <img
+                            className="stroke-black dark:stroke-white w-4 h-4 brightness-0 saturate-[100%] invert-[0%] sepia-[0%] saturate-[7500%] hue-rotate-[160deg] brightness-[99%] contrast-[105%] dark:brightness-0 saturate-[100%] invert sepia saturate-[1%] hue-rotate-[48deg] brightness-[104%] contrast-[101%]"
+                            src={menuItem.icon}
+                            alt="menu-icon"
+                        />
+                    )}
 
                     {menu && <span
                         className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
 
                     {
                         (menu && menuItem.subItems.length > 0) &&
-                        <svg className="stroke-black dark:stroke-white w-4 h-4 ml-auto" aria-hidden="true"
-                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 10">
+                        <svg className="stroke-black fill-black  dark:stroke-white dark:fill-white w-3 h-3 ml-auto" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
                             <path stroke="currentColor"
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
@@ -77,7 +80,7 @@ function MenuItem({menuItem, menu}) {
             }
 
             {isOpen && menuItem.subItems && (
-                <ul className="flex flex-col mx-4 my-6 space-y-4">
+                <ul className="flex flex-col mx-8 space-y-1 my-1">
                     {menuItem.subItems.map((subItem, index) => (
                         <MenuItem key={index} menuItem={subItem} menu={menu}/>
                     ))}
@@ -111,6 +114,7 @@ function DashboardSidebar(params) {
             subItems: [],
             permission: "isAdmin",
             to: "users",
+            icon: userIcon
         },
         {
             title: 'Dev',
@@ -119,19 +123,27 @@ function DashboardSidebar(params) {
                 {title: 'Online', subItems: [], to: "dev/online"},
                 {title: 'Batch', subItems: [], to: "dev/batch"},
             ],
+            icon: funcIcon
         },
         {
             title: 'Int',
             subItems: [],
             permission: "f2Access",
             to: "int",
+            icon: funcIcon
         },
-        // {title: 'Prod', subItems: [] ,permission: "f3Access", to: "prod",},
+        {
+            title: 'Test',
+            subItems: [],
+            permission: "f3Access",
+            to: "test",
+            icon: funcIcon
+        },
+        // {title: 'Prod', subItems: [] ,permission: "f4Access", to: "prod",},
     ];
 
     return (
-        <aside
-            className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
+        <aside className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
       <span
           className="inline-flex items-center justify-center h-20
           w-full bg-white border-r-[black] border-r border-solid dark:bg-gray-800 ">
@@ -144,14 +156,13 @@ function DashboardSidebar(params) {
 
             <div
                 className="flex-grow flex flex-col justify-between text-gray-500 bg-white border-r-[black] border-r border-solid  dark:bg-gray-800 ">
-                <ul className="flex flex-col mx-4 my-6 space-y-4">
+                <ul className="flex flex-col mx-4 my-6 space-y-2">
                     {menuItems.map((menuItem, index) => (
                         permissions[menuItem.permission] &&
                         <MenuItem key={index}
                                   menuItem={menuItem}
                                   menu={params.menu}/>
                     ))}
-
                 </ul>
 
                 <button

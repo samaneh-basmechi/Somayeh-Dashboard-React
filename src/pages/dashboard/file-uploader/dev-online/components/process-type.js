@@ -8,7 +8,7 @@ const ProcessType = (props) => {
     <div className="w-[250px]">
       <label htmlFor="Vearbeitungstype"
              className="block mb-2 text-sm font-medium text-black dark:text-white">
-        {t('dashboard.fileUploader.ProcessType.label')}
+          Verarbeitungstyp
       </label>
       <select
         id="Vearbeitungstype"
@@ -23,10 +23,10 @@ const ProcessType = (props) => {
           required: t('dashboard.fileUploader.ProcessType.error')
         })}>
         <option value="" disabled>
-          {t('dashboard.fileUploader.ProcessType.defaultOption')}
+          Select Verarbeitungstyp
         </option>
         <option value="Online">
-          {t('dashboard.fileUploader.ProcessType.options.Online')}
+          Online
         </option>
       </select>
       <div className="h-[8px] text-[red] text-[10px] font-bold mt-1">

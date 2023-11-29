@@ -6,9 +6,6 @@ const Payload = (props) => {
 
     return (
         <div className="mb-6 mt-2 mx-auto bg-white dark:bg-gray-800 rounded-md w-[100%]">
-            <p className="font-normal text-md text-black dark:text-gray-100 mb-4">
-                {t('dashboard.fileUploader.payload.title')}
-            </p>
 
             <div className="mb-5 relative cursor-pointer">
                 <input
