@@ -1,14 +1,29 @@
-import { createBrowserRouter } from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
 import Login from './pages/authentication/login';
 import LandingPage from './pages/landing/landing-page';
 import LandingLayout from './pages/landing/landing-layout';
 import DashboardLayout from './pages/dashboard/dashboard-layout';
-import FileUploaderInt, { uploadAction } from './pages/dashboard/file-uploader/int/file-uploader-int';
 import Profile from './pages/dashboard/profile/profile';
 import UserList from './pages/dashboard/users/users-list';
-import FileUploaderDevOnline from "./pages/dashboard/file-uploader/dev-online/file-uploader-dev-online";
-import FileUploaderDevBatch from "./pages/dashboard/file-uploader/dev-batch/file-uploader-dev-batch";
-import FileUploaderTest from "./pages/dashboard/file-uploader/test/file-uploader-test";
+import FileUploaderDevOnline, {
+  uploadActionDevOnline
+} from "./pages/dashboard/file-uploader/dev/dev-online/file-uploader-dev-online";
+import FileUploaderDevBatch, {
+  uploadActionDevBatch
+} from "./pages/dashboard/file-uploader/dev/dev-batch/file-uploader-dev-batch";
+import FileUploaderIntOnline, {
+  uploadActionIntOnline
+} from "./pages/dashboard/file-uploader/int/int-online/file-uploader-int-online";
+import FileUploaderIntBatch, {
+  uploadActionIntBatch
+} from "./pages/dashboard/file-uploader/int/int-batch/file-uploader-int-batch";
+import FileUploaderTestOnline, {
+  uploadActionTestOnline
+} from "./pages/dashboard/file-uploader/test/test-online/file-uploader-test-online";
+import FileUploaderTestBatch, {
+  uploadActionTestBatch
+} from "./pages/dashboard/file-uploader/test/test-batch/file-uploader-test-batch";
+import FileUploaderEntwickler, {uploadActionEntwickler} from "./pages/dashboard/file-uploader/entwickler/entwickler";
 
 const router = createBrowserRouter([
   {
@@ -30,41 +45,53 @@ const router = createBrowserRouter([
     element: <DashboardLayout/>,
     children: [
       {
-        element: <UserList/>,
-        action: uploadAction,
-        errorElement: <UserList/>,
+        element: <Profile/>,
+        errorElement: <Profile/>,
         index: true
       },
       {
         path: 'dev/online',
         element: <FileUploaderDevOnline/>,
-        action: uploadAction,
+        action: uploadActionDevOnline,
         errorElement: <FileUploaderDevOnline/>
       },
       {
         path: 'dev/batch',
         element: <FileUploaderDevBatch/>,
-        action: uploadAction,
+        action: uploadActionDevBatch,
         errorElement: <FileUploaderDevBatch/>
       },
       {
-        path: 'int',
-        element: <FileUploaderInt/>,
-        action: uploadAction,
-        errorElement: <FileUploaderInt/>
+        path: 'int/online',
+        element: <FileUploaderIntOnline/>,
+        action: uploadActionIntOnline,
+        errorElement: <FileUploaderIntOnline/>
       },
       {
-        path: 'test',
-        element: <FileUploaderTest/>,
-        action: uploadAction,
-        errorElement: <FileUploaderTest/>
+        path: 'int/batch',
+        element: <FileUploaderIntBatch/>,
+        action: uploadActionIntBatch,
+        errorElement: <FileUploaderIntBatch/>
       },
-      // {
-      //   path: 'prod',
-      //   element: <FileUploaderInt/>,
-      //   action: uploadAction,
-      //   errorElement: <FileUploaderInt/>
-      // },
+
+      {
+        path: 'test/online',
+        element: <FileUploaderTestOnline/>,
+        action: uploadActionTestOnline,
+        errorElement: <FileUploaderTestOnline/>
+      },
+      {
+        path: 'test/batch',
+        element: <FileUploaderTestBatch/>,
+        action: uploadActionTestBatch,
+        errorElement: <FileUploaderTestBatch/>
+      },
+      {
+        path: 'entwickler',
+        element: <FileUploaderEntwickler/>,
+        action: uploadActionEntwickler,
+        errorElement: <FileUploaderEntwickler/>
+      },
       {
         path: 'users',
         element: <UserList/>,

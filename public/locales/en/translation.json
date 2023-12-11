@@ -1,4 +1,14 @@
 {
+  "message": {
+    "apiError": "Error, please try again.",
+    "getPermissionApiError": "Error, can not get permissions",
+    "getUserInfoApiError": "Error, can not get user information",
+    "successChangePassword": "Successful, your password password changed, you are redirection to login again.",
+    "successRegister": "Successful, new user registered.",
+    "successResetPassword": "Successful, password reset.",
+    "successChangePermissions": "Success, permissions changed.",
+    "changePassword": "You have to change your password."
+  },
   "login": {
     "login": "Login",
     "submitting": "Submitting...",
@@ -215,7 +225,8 @@
       "confirmNewPassword": {
         "label": "Confirm new Password",
         "error": "Please Enter your confirm new password.",
-        "placeholder": "Enter your confirm new password"
+        "placeholder": "Enter your confirm new password",
+        "matchingError": "Password and confirm password dose not match!"
       },
       "submit": "Change Password"
     }

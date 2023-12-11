@@ -5,6 +5,9 @@ import {useForm} from 'react-hook-form';
 import {Form, useNavigation, useRouteError} from 'react-router-dom';
 import {httpService} from '../../../core/http-service';
 import CUSTOM_STYLE from './modal-style';
+import {toast, ToastContainer} from "react-toastify";
+import { NOTIFY_CONFIG} from "../../../shared/notif";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = (props) => {
     const [openRegisterModal, setOpenRegisterModal] = useState(false);
@@ -13,18 +16,22 @@ const Register = (props) => {
     const onSubmit = (data) => {
         delete data['confirmPassword'];
         const payload = Object.assign({isAdmin: false}, data);
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: {
-                access_token: token,
-            },
-        };
-        httpService.post('/users', payload, config)
+
+        httpService.post('/users', payload)
             .then(response => {
+                    const message = t('message.successRegister');
+                    toast.success(message, {
+                        ...NOTIFY_CONFIG
+                    });
                     props.getUser();
                     closeRegister();
                 }
-            ).catch(error => console.error(error));
+            ).catch(error => {
+            const message = error?.message || t('message.apiError');
+            toast.error(message, {
+                ...NOTIFY_CONFIG
+            });
+        });
     };
     const navigation = useNavigation();
     const isSubmitting = navigation.state !== 'idle';
@@ -54,6 +61,7 @@ const Register = (props) => {
 
     return (
         <>
+            <ToastContainer/>
             <button
                 onClick={openRegister}
                 type="button"

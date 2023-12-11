@@ -1,4 +1,14 @@
 {
+  "message": {
+    "apiError": "Fehler, bitte versuchen Sie es erneut.",
+    "getPermissionApiError": "Fehler, Berechtigungen können nicht abgerufen werden",
+    "getUserInfoApiError": "Fehler, Benutzerinformationen können nicht abgerufen werden",
+    "successChangePassword": "Erfolgreich, Ihr Passwort wurde geändert, Sie werden zur erneuten Anmeldung weitergeleitet.",
+    "successRegister": "Erfolgreich, neuer Benutzer registriert.",
+    "successResetPassword": "Erfolgreich, Passwort zurückgesetzt.",
+    "successChangePermissions": "Erfolgreich, Berechtigungen geändert.",
+    "changePassword": "Sie müssen Ihr Passwort ändern."
+  },
   "login": {
     "login": "Anmeldung",
     "submitting": "einreichen...",
@@ -215,7 +225,8 @@
       "confirmNewPassword": {
         "label": "Bestätige neues Passwort",
         "error": "Bitte geben Sie Ihr neues Passwort zur Bestätigung ein.",
-        "placeholder": "Geben Sie Ihr neues Passwort zur Bestätigung ein"
+        "placeholder": "Geben Sie Ihr neues Passwort zur Bestätigung ein",
+        "matchingError": "Passwort und Bestätigungspasswort stimmen nicht überein!"
       },
       "submit": "Kennwort ändern"
     }

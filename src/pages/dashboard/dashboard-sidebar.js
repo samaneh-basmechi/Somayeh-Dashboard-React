@@ -7,7 +7,6 @@ import userIcon from '../../assets/images/user.svg';
 import funcIcon from '../../assets/images/func.svg';
 
 function MenuItem({menuItem, menu}) {
-    const {t} = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSubMenu = () => {
@@ -25,14 +24,14 @@ function MenuItem({menuItem, menu}) {
 
                     {menuItem.icon && (
                         <img
-                            className="stroke-black dark:stroke-white w-4 h-4 brightness-0 saturate-[100%] invert-[0%] sepia-[0%] saturate-[7500%] hue-rotate-[160deg] brightness-[99%] contrast-[105%] dark:brightness-0 saturate-[100%] invert sepia saturate-[1%] hue-rotate-[48deg] brightness-[104%] contrast-[101%]"
+                            className="w-4 h-4 dark:invert"
                             src={menuItem.icon}
                             alt="menu-icon"
                         />
                     )}
 
                     {menu && <span
-                        className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
+                        className="ml-2 load-animation-nav-item">{menuItem.title}</span>}
 
                     {
                         (menu && menuItem.subItems.length > 0) &&
@@ -54,20 +53,22 @@ function MenuItem({menuItem, menu}) {
                                  hover:bg-gray-500 focus:bg-gray-400 dark:text-white
                                  rounded-lg px-2 ${menu ? 'justify-start' : 'justify-center'}`}>
 
+
                     {menuItem.icon && (
                         <img
-                            className="stroke-black dark:stroke-white w-4 h-4 brightness-0 saturate-[100%] invert-[0%] sepia-[0%] saturate-[7500%] hue-rotate-[160deg] brightness-[99%] contrast-[105%] dark:brightness-0 saturate-[100%] invert sepia saturate-[1%] hue-rotate-[48deg] brightness-[104%] contrast-[101%]"
+                            className="w-4 h-4 dark:invert"
                             src={menuItem.icon}
                             alt="menu-icon"
                         />
                     )}
 
                     {menu && <span
-                        className="ml-2 load-animation-nav-item">{t(`dashboard.sidebar.link.${menuItem.title}`)}</span>}
+                        className="ml-2 load-animation-nav-item">{menuItem.title}</span>}
 
                     {
                         (menu && menuItem.subItems.length > 0) &&
-                        <svg className="stroke-black fill-black  dark:stroke-white dark:fill-white w-3 h-3 ml-auto" aria-hidden="true"
+                        <svg className="stroke-black fill-black  dark:stroke-white dark:fill-white w-3 h-3 ml-auto"
+                             aria-hidden="true"
                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
                             <path stroke="currentColor"
                                   strokeLinecap="round"
@@ -100,7 +101,7 @@ function DashboardSidebar(params) {
         getPermissions();
     }, []);
     const logout = () => {
-        localStorage.removeItem('token');
+        localStorage.clear();
         navigate('/login');
     };
 
@@ -127,29 +128,40 @@ function DashboardSidebar(params) {
         },
         {
             title: 'Int',
-            subItems: [],
             permission: "f2Access",
-            to: "int",
+            subItems: [
+                {title: 'Online', subItems: [], to: "int/online"},
+                {title: 'Batch', subItems: [], to: "int/batch"},
+            ],
             icon: funcIcon
         },
         {
             title: 'Test',
-            subItems: [],
             permission: "f3Access",
-            to: "test",
+            subItems: [
+                {title: 'Online', subItems: [], to: "test/online"},
+                {title: 'Batch', subItems: [], to: "test/batch"},
+            ],
             icon: funcIcon
         },
-        // {title: 'Prod', subItems: [] ,permission: "f4Access", to: "prod",},
+        {
+            title: 'Entwickler',
+            subItems: [],
+            permission: "f4Access",
+            to: "entwickler",
+            icon: funcIcon
+        },
     ];
 
     return (
-        <aside className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
+        <aside
+            className={`flex flex-col ${window.outerWidth > 768 ? 'hidden sm:flex sm:flex-col' : ''} ${params.menu ? 'open' : 'close'}`}>
       <span
           className="inline-flex items-center justify-center h-20
           w-full bg-white border-r-[black] border-r border-solid dark:bg-gray-800 ">
         {params.menu &&
             <span className="text-black dark:text-gray-300 text-xl">
-          {t('dashboard.sidebar.title')}
+         Dashboard
         </span>
         }
       </span>
